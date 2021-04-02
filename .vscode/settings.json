@@ -1,0 +1,10 @@
+{
+	"files.insertFinalNewline": true,
+	"files.trimTrailingWhitespace": true,
+	"[latex]": {
+		"editor.rulers": [
+			80,
+			140
+		]
+	}
+}
