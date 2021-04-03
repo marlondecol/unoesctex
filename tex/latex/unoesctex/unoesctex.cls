@@ -115,19 +115,12 @@
 \RequirePackage{hyperxmp}
 \RequirePackage{indentfirst}
 \RequirePackage{lastpage}
-\RequirePackage{mathtools}
 \RequirePackage{pdfpages}
 \RequirePackage{silence}
 \RequirePackage{titlesec}
+\RequirePackage{unicode-math}
 \RequirePackage{xcolor}
 \RequirePackage{xstring}
-
-% Desativa eventuais avisos do pacote `unicode-math` para com o `mathtools`.
-\RequirePackage[warnings-off={%
-	mathtools-colon,
-	mathtools-overbracket,
-	mathtools-underbracket
-}]{unicode-math}
 
 % Suprime aviso de utilização do pacote caption com a classe memoir.
 \WarningFilter*{memoir}{For the caption package to function properly with memoir}
@@ -284,9 +277,6 @@
 \DeclareMathOperator{\arctg}{arctg}
 \DeclareMathOperator{\senh}{senh}
 \DeclareMathOperator{\tgh}{tgh}
-
-% \abs{} permite utilizar barras verticais mais facilmente, como em módulos.
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}
 
 
 
