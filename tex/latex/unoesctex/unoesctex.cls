@@ -101,7 +101,7 @@
 	section=TITLE,
 	% Define o estilo do sumário.
 	sumario=tradicional
-]{abntex2/abntex2}
+]{abntex2}
 
 
 
