@@ -1070,12 +1070,6 @@
 	% Vai para uma nova página.
 	\newpage
 
-	% Ajusta a númeração da página para o bookmark.
-	\phantomsection
-
-	% Adiciona o título ao sumário.
-	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeTextUppercase{#1}}{#1}}
-
 	% Centraliza na página.
 	\begin{center}%
 		\vspace*{\fill}
@@ -1098,6 +1092,16 @@
 \newcommand{\imprimirtituloapendices}{\imprimircentralizado{Apêndices}}
 \newcommand{\imprimirtituloapendicesanexos}{\imprimircentralizado{Apêndices e anexos}}
 
+% Comandos condicionais para criação de grupos de apêndices e anexos nos
+% bookmarks.
+% ------------------------------------------------------------------------------
+% Grupo para os apêndices.
+\newboolean{apendicesbookmarknotexists}
+\setboolean{apendicesbookmarknotexists}{true}
+% Grupo para os anexos.
+\newboolean{anexosbookmarknotexists}
+\setboolean{anexosbookmarknotexists}{true}
+
 
 
 % ------------------------------------------------------------------------------
@@ -1114,6 +1118,16 @@
 
 	% Incrementa o contador da numeração do título.
 	\refstepcounter{apendicechapter}\labelfromfile{apx}{#2}
+
+	% Cria um grupo para os apêndices nos bookmarks.
+	\ifthenelse{\boolean{apendicesbookmarknotexists}}{%
+		\pdfbookmark[-1]{Apêndices}{toc}\setboolean{apendicesbookmarknotexists}{false}
+	}{}
+
+	% Adiciona o título ao sumário.
+	\addcontentsline{toc}{chapter}{%
+		\texorpdfstring{AP\^ENDICE\space\theapendicechapter\space--\space\MakeTextUppercase{#1}}{#1}
+	}
 
 	% Imprime o título do apêndice.
 	\apendicechapter*{#1}
@@ -1136,15 +1150,35 @@
 	% Incrementa o contador da numeração do título.
 	\refstepcounter{apendicechapter}\labelfromfile{apx}{#2}
 
+	% Cria um grupo para os apêndices nos bookmarks.
+	\ifthenelse{\boolean{apendicesbookmarknotexists}}{%
+		\pdfbookmark[-1]{Apêndices}{toc}\setboolean{apendicesbookmarknotexists}{false}
+	}{}
+
+	% Adiciona o título ao sumário.
+	\addcontentsline{toc}{chapter}{%
+		\texorpdfstring{AP\^ENDICE\space\theapendicechapter\space--\space\MakeTextUppercase{#1}}{#1}
+	}
+
 	% Insere a primeira página do arquivo.
 	\includepdf[%
-		% Imprime o título do apêndice, mantendo o estilo de paginação.
-		pagecommand=\apendicechapter*{#1}\thispagestyle{abntheadings},
-		pages=1
+		height=\textheight-2\baselineskip,
+		keepaspectratio,
+		offset=0.5cm -0.5cm,
+		% Imprime o título do apêndice e mantém o estilo de paginação.
+		pagecommand={\apendicechapter*{#1}\thispagestyle{abntheadings}},
+		pages=1,
+		width=\textwidth
 	]{#2}
 
 	% Insere as demais páginas, se houver.
-	\includepdf[pages=2-]{#2}
+	\includepdf[%
+		height=\textheight-2\baselineskip,
+		keepaspectratio,
+		offset=0.5cm -0.5cm,
+		pages=2-,
+		width=\textwidth
+	]{#2}
 
 	% Finaliza a página.
 	\cleardoublepage
@@ -1156,8 +1190,9 @@
 % ANEXOS.
 % ------------------------------------------------------------------------------
 
-% Insere um anexo a partir de um arquivo LaTeX.
-\newcommand{\imprimiranexo}[3]{%
+% Insere um anexo a partir de um arquivo LaTeX. A fonte do documento deve ser
+% inserida neste arquivo de forma manual.
+\newcommand{\imprimiranexo}[2]{%
 	% Vai para uma nova página.
 	\newpage
 
@@ -1165,16 +1200,23 @@
 	\phantomsection
 
 	% Incrementa o contador da numeração do título.
-	\refstepcounter{apendicechapter}\labelfromfile{anx}{#2}
+	\refstepcounter{anexochapter}\labelfromfile{anx}{#2}
+
+	% Cria um grupo para os anexos nos bookmarks.
+	\ifthenelse{\boolean{anexosbookmarknotexists}}{%
+		\pdfbookmark[-1]{Anexos}{toc}\setboolean{anexosbookmarknotexists}{false}
+	}{}
+
+	% Adiciona o título ao sumário.
+	\addcontentsline{toc}{chapter}{%
+		\texorpdfstring{ANEXO\space\theanexochapter\space--\space\MakeTextUppercase{#1}}{#1}
+	}
 
 	% Imprime o título do anexo.
 	\anexochapter*{#1}
 
 	% Insere o conteúdo.
 	\input{#2}\unskip
-
-	% Insere a fonte do documento.
-	\fonte{#3}
 
 	% Finaliza a página.
 	\cleardoublepage
@@ -1189,20 +1231,51 @@
 	\phantomsection
 
 	% Incrementa o contador da numeração do título.
-	\refstepcounter{apendicechapter}\labelfromfile{anx}{#2}
+	\refstepcounter{anexochapter}\labelfromfile{anx}{#2}
+
+	% Cria um grupo para os anexos nos bookmarks.
+	\ifthenelse{\boolean{anexosbookmarknotexists}}{%
+		\pdfbookmark[-1]{Anexos}{toc}\setboolean{anexosbookmarknotexists}{false}
+	}{}
+
+	% Adiciona o título ao sumário.
+	\addcontentsline{toc}{chapter}{%
+		\texorpdfstring{ANEXO\space\theanexochapter\space--\space\MakeTextUppercase{#1}}{#1}
+	}
 
 	% Insere a primeira página do arquivo.
 	\includepdf[%
-		% Imprime o título do anexo, mantendo o estilo de paginação.
-		pagecommand=\anexochapter*{#1}\thispagestyle{abntheadings},
-		pages=1
+		height=\textheight-2\baselineskip,
+		keepaspectratio,
+		offset=0.5cm -0.5cm,
+		pagecommand={%
+			% Imprime o título do anexo e mantém o estilo de paginação.
+			\anexochapter*{#1}\thispagestyle{abntheadings}
+			% Imprime a fonte do documento no final da página.
+			\vspace*{\fill}
+			\ABNTEXfontereduzida\noindent\fontename:\space\ignorespaces#3.
+			\vspace*{\baselineskip}
+		},
+		pages=1,
+		width=\textwidth
 	]{#2}
 
 	% Insere as demais páginas, se houver.
-	\includepdf[pages=2-]{#2}
-
-	% Insere a fonte do documento.
-	\fonte{#3}
+	\includepdf[%
+		height=\textheight-2\baselineskip,
+		keepaspectratio,
+		offset=0.5cm -0.5cm,
+		pagecommand={%
+			% Mantém o estilo de paginação.
+			\thispagestyle{abntheadings}
+			% Imprime a fonte do documento no final de todas as páginas.
+			\vspace*{\fill}
+			\ABNTEXfontereduzida\noindent\fontename:\space\ignorespaces#3.
+			\vspace*{\baselineskip}
+		},
+		pages=2-,
+		width=\textwidth
+	]{#2}
 
 	% Finaliza a página.
 	\cleardoublepage
