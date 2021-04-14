@@ -424,7 +424,7 @@
 \setlength{\textfloatsep}{1.3\baselineskip}
 
 % Declara um separador para os rótulo e as legendas.
-\DeclareCaptionLabelSeparator{dash}{\space-\space}
+\DeclareCaptionLabelSeparator{dash}{\space--\space}
 
 \AtBeginDocument{%
 	% Configura a exibição das legendas em figuras, quadros e tabelas.
@@ -527,7 +527,7 @@
 \newlist{acronymize}{itemize}{1}
 
 % Cria um novo comando para adição de um item na lista de abreviações e siglas.
-\newcommand{\acronym}[1]{\item[#1]-}
+\newcommand{\acronym}[1]{\item[#1]--}
 
 % Configuração do ambiente de abreviações e siglas.
 \setlist[acronymize, 1]{align=parleft, itemsep=0cm, labelsep=0cm, labelwidth=3cm, leftmargin=!, parsep=0cm, topsep=0cm}
@@ -806,7 +806,7 @@
 % Corrige a separação entre o prefixo e o título.
 \renewcommand{\cftfigurename}{}
 \renewcommand{\cftfigurepresnum}{\figurename\space}
-\renewcommand{\cftfigureaftersnum}{\space-}
+\renewcommand{\cftfigureaftersnum}{\space--}
 
 % Refatoração do comando de impressão da lista de ilustrações.
 \newcommand{\imprimirfiguras}{%
@@ -853,7 +853,7 @@
 
 % Configura os rótulos da lista de quadros.
 \renewcommand{\cftquadropresnum}{\quadroname\space}
-\renewcommand{\cftquadroaftersnum}{\space-}
+\renewcommand{\cftquadroaftersnum}{\space--}
 
 % Refatoração do comando de impressão da lista de quadros.
 \newcommand{\imprimirquadros}{%
@@ -883,7 +883,7 @@
 % Corrige a separação entre o prefixo e o título.
 \renewcommand{\cfttablename}{}
 \renewcommand{\cfttablepresnum}{\tablename\space}
-\renewcommand{\cfttableaftersnum}{\space-}
+\renewcommand{\cfttableaftersnum}{\space--}
 
 % Refatoração do comando de impressão da lista de tabelas.
 \newcommand{\imprimirtabelas}{%
