@@ -389,7 +389,7 @@
 % Reconfigura o ambiente de citação direta longa.
 \renewenvironment*{citacao}[1][default]{%
 	% Pula uma linha antes do bloco.
-	\vspace*{1em}
+	\vspace*{\baselineskip}
 
 	% Inicia um bloco com espaçamento entre-linhas simples.
 	\begin{SingleSpace}
@@ -409,7 +409,7 @@
 	\end{SingleSpace}
 
 	% Pula uma linha após o bloco.
-	\vspace*{1em}
+	\vspace*{\baselineskip}
 }
 
 
@@ -739,6 +739,8 @@
 		% Imprime local e data.
 		\textbf{\MakeUppercase\imprimirlocal}\par
 		\textbf{\imprimirdata}
+
+		\vspace*{\baselineskip}
 	\end{capa}
 }
 
@@ -790,6 +792,8 @@
 		% Imprime local e data.
 		\imprimirlocal\par
 		\imprimirdata
+
+		\vspace*{\baselineskip}
 	\end{folhaderosto}
 }
 
