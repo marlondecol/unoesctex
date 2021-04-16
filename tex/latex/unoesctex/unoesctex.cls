@@ -1102,6 +1102,10 @@
 \newboolean{anexosbookmarknotexists}
 \setboolean{anexosbookmarknotexists}{true}
 
+% Contador de páginas para os anexos. Utiliza-se ao imprimir a fonte,
+% incrementando seu valor a cada página.
+\newcounter{anexopage}
+
 
 
 % ------------------------------------------------------------------------------
@@ -1223,7 +1227,7 @@
 }
 
 % Insere um anexo a partir de um arquivo PDF.
-\newcommand{\imprimiranexopdf}[3]{%
+\newcommand{\imprimiranexopdf}[4]{%
 	% Vai para uma nova página.
 	\newpage
 
@@ -1243,6 +1247,9 @@
 		\texorpdfstring{ANEXO\space\theanexochapter\space--\space\MakeTextUppercase{#1}}{#1}
 	}
 
+	% Reinicia a numeração das páginas para o valor informado.
+	\setcounter{anexopage}{#4}
+
 	% Insere a primeira página do arquivo.
 	\includepdf[%
 		height=\textheight-2\baselineskip,
@@ -1253,7 +1260,7 @@
 			\anexochapter*{#1}\thispagestyle{abntheadings}
 			% Imprime a fonte do documento no final da página.
 			\vspace*{\fill}
-			\ABNTEXfontereduzida\noindent\fontename:\space\ignorespaces#3.
+			\ABNTEXfontereduzida\noindent\fontename:\space\ignorespaces\citeonline[p. \theanexopage]{#3}.
 			\vspace*{\baselineskip}
 		},
 		pages=1,
@@ -1268,9 +1275,11 @@
 		pagecommand={%
 			% Mantém o estilo de paginação.
 			\thispagestyle{abntheadings}
+			% Incrementa a numeração da página da fonte.
+			\stepcounter{anexopage}
 			% Imprime a fonte do documento no final de todas as páginas.
 			\vspace*{\fill}
-			\ABNTEXfontereduzida\noindent\fontename:\space\ignorespaces#3.
+			\ABNTEXfontereduzida\noindent\fontename:\space\ignorespaces\citeonline[p. \theanexopage]{#3}.
 			\vspace*{\baselineskip}
 		},
 		pages=2-,
