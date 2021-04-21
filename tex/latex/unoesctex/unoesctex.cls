@@ -1027,7 +1027,9 @@
 		% Não centraliza a legenda se tiver apenas uma linha.
 		singlelinecheck=false,
 		% Distância entre a legenda e o elemento em questão.
-		skip=6pt
+		skip=6pt,
+		% Adiciona um ponto final ao texto da legenda.
+		textformat=period
 	}
 }
 
