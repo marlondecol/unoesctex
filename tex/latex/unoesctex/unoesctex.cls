@@ -503,25 +503,59 @@
 
 
 % ------------------------------------------------------------------------------
-% ITENS, LISTAS E LISTAS ENUMERADAS.
+% ALÍNEAS.
 % ------------------------------------------------------------------------------
 
+% Configurações de alíneas.
+\setlist[alineas, 1]{%
+	% Alinha os indicadores à esquerda.
+	align=left,
+	% Nenhum espaçamento entre os itens.
+	itemsep=0cm,
+	% As alíneas devem ser indicadas alfabeticamente, em letra minúscula,
+	% seguida de parêntese e espaço.
+	label=\alph*)\space,
+	% Calcula o recuo dos indicadores com base no maior tamanho de indicador
+	% possível e em outras medidas.
+	labelindent=*,
+	% Remove o espaçamento após os indicadores. O espaço é adicionado na própria
+	% definição do rótulo.
+	labelsep=0cm,
+	% Utiliza-se recuo em relação à margem esquerda de mesmo tamanho do recuo de
+	% início de parágrafos do texto corrente.
+	leftmargin=\parindent,
+	% Recuo de início de parágrafos internos igual ao do texto corrente.
+	listparindent=\parindent,
+	% Nenhum espaçamento entre parágrafos.
+	parsep=0cm,
+	% Nenhum espaçamento antes do primeiro parágrafo e após o último.
+	partopsep=0cm,
+	% Deixa uma linha em branco entre as alíneas e o texto corrente.
+	topsep=\baselineskip,
+	% Define o maior tamanho de indicador possível.
+	widest=mm
+}
 
-% Configuração de ambientes de lista enumerada.
-% ------------------------------------------------------------------------------
-% Nível 1.
-\setlist[enumerate, 1]{itemsep=0cm, label=\alph*), labelsep=0.5cm, leftmargin=1.25cm, parsep=0cm, partopsep=6pt, topsep=1em}
-% Nível 2.
-\setlist[enumerate, 2]{itemsep=0cm, label=\roman*., labelsep=0.5cm, leftmargin=0.75cm, parsep=0cm, partopsep=6pt, topsep=1em}
-
-
-% Configuração de ambientes de itens.
-% ------------------------------------------------------------------------------
-% Nível 1.
-\setlist[itemize, 1]{itemsep=0cm, labelsep=0.5cm, leftmargin=1.25cm, parsep=0cm, partopsep=6pt, topsep=1em}
-% Nível 2.
-\setlist[itemize, 2]{itemsep=0cm, labelsep=0.5cm, leftmargin=0.75cm, parsep=0cm, partopsep=6pt, topsep=1em}
-
+% Configurações de subalíneas.
+\setlist[alineas, 2]{%
+	% Nenhum espaçamento entre os itens.
+	itemsep=0cm,
+	% As subalíneas devem ser indicadas por meia-risca.
+	label=--,
+	% Adiciona um espaçamento arbitrário após os indicadores.
+	labelsep=0.2cm,
+	% Calcula a margem esquerda com base na largura dos indicadores e outras
+	% medidas.
+	leftmargin=*,
+	% Recuo de parágrafos internos igual ao do texto corrente.
+	listparindent=\parindent,
+	% Nenhum espaçamento entre parágrafos.
+	parsep=0cm,
+	% Nenhum espaçamento antes do primeiro parágrafo e após o último.
+	partopsep=0cm,
+	% Nenhum espaçamento em branco entre as subalíneas e as alíneas.
+	topsep=0cm
+}
 
 % Criação do ambiente de abreviações e siglas.
 \newlist{acronymize}{itemize}{1}
@@ -1091,6 +1125,7 @@
 \newcommand{\imprimirtituloanexos}{\imprimircentralizado{Anexos}}
 \newcommand{\imprimirtituloapendices}{\imprimircentralizado{Apêndices}}
 \newcommand{\imprimirtituloapendicesanexos}{\imprimircentralizado{Apêndices e anexos}}
+
 
 % Comandos condicionais para criação de grupos de apêndices e anexos nos
 % bookmarks.
