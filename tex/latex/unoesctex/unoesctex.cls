@@ -1194,6 +1194,16 @@
 % ANEXOS.
 % ------------------------------------------------------------------------------
 
+% Insere a fonte de um anexo. Os parâmetros são os mesmos dos utilizados pelos
+% comandos de citação.
+\newcommand{\fonteanexo}[2][]{%
+	% Diminui o tamanho da fonte.
+	\ABNTEXfontereduzida
+
+	% Constrói o texto da fonte.
+	\noindent\fontename:\space\ignorespaces\citeonline[#1]{#2}.
+}
+
 % Insere um anexo a partir de um arquivo LaTeX. A fonte do documento deve ser
 % inserida neste arquivo de forma manual.
 \newcommand{\imprimiranexo}[2]{%
@@ -1227,7 +1237,7 @@
 }
 
 % Insere um anexo a partir de um arquivo PDF.
-\newcommand{\imprimiranexopdf}[4]{%
+\newcommand{\imprimiranexopdf}[4][0]{%
 	% Vai para uma nova página.
 	\newpage
 
@@ -1235,7 +1245,7 @@
 	\phantomsection
 
 	% Incrementa o contador da numeração do título.
-	\refstepcounter{anexochapter}\labelfromfile{anx}{#2}
+	\refstepcounter{anexochapter}\labelfromfile{anx}{#3}
 
 	% Cria um grupo para os anexos nos bookmarks.
 	\ifthenelse{\boolean{anexosbookmarknotexists}}{%
@@ -1244,11 +1254,11 @@
 
 	% Adiciona o título ao sumário.
 	\addcontentsline{toc}{chapter}{%
-		\texorpdfstring{ANEXO\space\theanexochapter\space--\space\MakeTextUppercase{#1}}{#1}
+		\texorpdfstring{ANEXO\space\theanexochapter\space--\space\MakeTextUppercase{#2}}{#2}
 	}
 
 	% Reinicia a numeração das páginas para o valor informado.
-	\setcounter{anexopage}{#4}
+	\setcounter{anexopage}{#1}
 
 	% Insere a primeira página do arquivo.
 	\includepdf[%
@@ -1257,15 +1267,15 @@
 		offset=0.5cm -0.5cm,
 		pagecommand={%
 			% Imprime o título do anexo e mantém o estilo de paginação.
-			\anexochapter*{#1}\thispagestyle{abntheadings}
+			\anexochapter*{#2}\thispagestyle{abntheadings}
 			% Imprime a fonte do documento no final da página.
 			\vspace*{\fill}
-			\ABNTEXfontereduzida\noindent\fontename:\space\ignorespaces\citeonline[p. \theanexopage]{#3}.
+			\fonteanexo[\ifnum#1>0 p. \theanexopage\fi]{#4}
 			\vspace*{\baselineskip}
 		},
 		pages=1,
 		width=\textwidth
-	]{#2}
+	]{#3}
 
 	% Insere as demais páginas, se houver.
 	\includepdf[%
@@ -1279,12 +1289,12 @@
 			\stepcounter{anexopage}
 			% Imprime a fonte do documento no final de todas as páginas.
 			\vspace*{\fill}
-			\ABNTEXfontereduzida\noindent\fontename:\space\ignorespaces\citeonline[p. \theanexopage]{#3}.
+			\fonteanexo[\ifnum#1>0 p. \theanexopage\fi]{#4}
 			\vspace*{\baselineskip}
 		},
 		pages=2-,
 		width=\textwidth
-	]{#2}
+	]{#3}
 
 	% Finaliza a página.
 	\cleardoublepage
