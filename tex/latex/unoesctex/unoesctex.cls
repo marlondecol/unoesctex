@@ -518,8 +518,8 @@
 	% Calcula o recuo dos indicadores com base no maior tamanho de indicador
 	% possível e em outras medidas.
 	labelindent=*,
-	% Remove o espaçamento após os indicadores. O espaço é adicionado na própria
-	% definição do rótulo.
+	% Remove o espaçamento à direita dos indicadores. O espaço é adicionado na
+	% própria definição do indicador.
 	labelsep=0cm,
 	% Utiliza-se recuo em relação à margem esquerda de mesmo tamanho do recuo de
 	% início de parágrafos do texto corrente.
@@ -556,15 +556,6 @@
 	% Nenhum espaçamento em branco entre as subalíneas e as alíneas.
 	topsep=0cm
 }
-
-% Criação do ambiente de abreviações e siglas.
-\newlist{acronymize}{itemize}{1}
-
-% Cria um novo comando para adição de um item na lista de abreviações e siglas.
-\newcommand{\acronym}[1]{\item[#1]--}
-
-% Configuração do ambiente de abreviações e siglas.
-\setlist[acronymize, 1]{align=parleft, itemsep=0cm, labelsep=0cm, labelwidth=3cm, leftmargin=!, parsep=0cm, topsep=0cm}
 
 
 
@@ -943,6 +934,31 @@
 % ------------------------------------------------------------------------------
 % LISTA DE ABREVIAÇÕES E SIGLAS.
 % ------------------------------------------------------------------------------
+
+% Criação do ambiente de abreviações e siglas.
+\newlist{acronymize}{itemize}{1}
+
+% Configuração do ambiente de abreviações e siglas.
+\setlist[acronymize, 1]{%
+	% Alinha os rótulos à esquerda.
+	align=parleft,
+	% Nenhum espaçamento entre os itens.
+	itemsep=0cm,
+	% Remove o espaçamento à direita dos rótulos.
+	labelsep=0cm,
+	% Define a largura reservada para os rótulos.
+	labelwidth=3cm,
+	% Calcula a margem esquerda com base na largura dos rótulos e outras
+	% medidas.
+	leftmargin=!,
+	% Nenhum espaçamento entre parágrafos.
+	parsep=0cm,
+	% Nenhum espaçamento antes do primeiro item e após o último.
+	topsep=0cm
+}
+
+% Adiciona um item na lista de abreviações e siglas.
+\newcommand{\acronym}[1]{\item[#1]--}
 
 % Comandos e configurações para o processamento automático de abreviações e
 % siglas.
