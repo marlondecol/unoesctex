@@ -368,10 +368,10 @@
 \renewcommand{\cftdotsep}{.5}
 
 % Define os espaços antes e depois de ambientes matemáticos.
-\setlength{\belowdisplayskip}{.5em}
-\setlength{\belowdisplayshortskip}{.5em}
-\setlength{\abovedisplayskip}{.5em}
-\setlength{\abovedisplayshortskip}{.5em}
+\setlength{\belowdisplayskip}{.5\baselineskip}
+\setlength{\belowdisplayshortskip}{.5\baselineskip}
+\setlength{\abovedisplayskip}{.5\baselineskip}
+\setlength{\abovedisplayshortskip}{.5\baselineskip}
 
 % Ajusta o espaçamento após os títulos dos resumos e abstracts.
 \setlength{\abstitleskip}{\baselineskip}
@@ -381,7 +381,7 @@
 \setlength{\afterchapskip}{\baselineskip}
 
 % Espaço entre as linhas em ambiente matemático.
-\setlength{\jot}{.75em}
+\setlength{\jot}{.75\baselineskip}
 
 % Recuo de parágrafo (tabulação).
 \setlength{\parindent}{1.25cm}
