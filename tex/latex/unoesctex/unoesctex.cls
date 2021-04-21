@@ -199,6 +199,33 @@
 
 
 % ------------------------------------------------------------------------------
+% DEFINIÇÕES DE CORES.
+% ------------------------------------------------------------------------------
+
+% Cores da Unoesc, extraídas da imagem unoesc.png, disponível no site da
+% universidade.
+\definecolor{unoesc-blue}{RGB}{15, 109, 182}
+\definecolor{unoesc-green}{RGB}{111, 194, 121}
+
+
+
+% ------------------------------------------------------------------------------
+% SÍMBOLOS MATEMÁTICOS.
+% ------------------------------------------------------------------------------
+
+% Operadores trigonométricos em português.
+\DeclareMathOperator{\sen}{sen}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\cotg}{cotg}
+\DeclareMathOperator{\cosec}{cosec}
+\DeclareMathOperator{\arcsen}{arcsen}
+\DeclareMathOperator{\arctg}{arctg}
+\DeclareMathOperator{\senh}{senh}
+\DeclareMathOperator{\tgh}{tgh}
+
+
+
+% ------------------------------------------------------------------------------
 % FONTES.
 % ------------------------------------------------------------------------------
 
@@ -254,29 +281,69 @@
 
 
 % ------------------------------------------------------------------------------
-% DEFINIÇÕES DE CORES.
+% FONTES DOS TÍTULOS.
 % ------------------------------------------------------------------------------
 
-% Cores da Unoesc, extraídas da imagem unoesc.png, disponível no site da
-% universidade.
-\definecolor{unoesc-blue}{RGB}{15, 109, 182}
-\definecolor{unoesc-green}{RGB}{111, 194, 121}
+% Títulos de primeiro e terceiro níveis são em negrito.
+\renewcommand{\ABNTEXpartfont}{\bfseries}
+\renewcommand{\ABNTEXchapterfont}{\bfseries}
+\renewcommand{\ABNTEXsubsectionfont}{\bfseries}
+
+% Títulos de segundo e quarto níveis são em fonte regular.
+\renewcommand{\ABNTEXsectionfont}{\mdseries}
+\renewcommand{\ABNTEXsubsubsectionfont}{\mdseries}
+
+% Títulos de quinto nível são em itálico.
+\renewcommand{\ABNTEXsubsubsubsectionfont}{\itshape}
+
+% Define a fonte dos títulos do último nível.
+\providecommand{\ABNTEXparagraphfont}{}
+\renewcommand{\ABNTEXparagraphfont}{\itshape}
+
+% O tamanho de todos os títulos deve ser 12pt.
+\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize}
+
+% Define o tamanho da fonte dos títulos do último nível.
+\providecommand{\ABNTEXparagraphfontsize}{}
+\renewcommand{\ABNTEXparagraphfontsize}{\normalsize}
 
 
 
 % ------------------------------------------------------------------------------
-% SÍMBOLOS MATEMÁTICOS.
+% FONTES DO SUMÁRIO.
 % ------------------------------------------------------------------------------
 
-% Operadores trigonométricos em português.
-\DeclareMathOperator{\sen}{sen}
-\DeclareMathOperator{\tg}{tg}
-\DeclareMathOperator{\cotg}{cotg}
-\DeclareMathOperator{\cosec}{cosec}
-\DeclareMathOperator{\arcsen}{arcsen}
-\DeclareMathOperator{\arctg}{arctg}
-\DeclareMathOperator{\senh}{senh}
-\DeclareMathOperator{\tgh}{tgh}
+\makeatletter
+
+% Converte a fonte dos chapters e sections que ficam no sumário em maiúsculo.
+\patchcmd{\l@chapter}{#1}{\uppercase{#1}}{}{}
+\patchcmd{\l@section}{#1}{\uppercase{#1}}{}{}
+
+\makeatother
+
+% Chapter.
+\renewcommand{\cftchapterfont}{\normalsize\bfseries}
+\renewcommand{\cftchapterpagefont}{\cftchapterfont}
+
+% Section.
+\renewcommand{\cftsectionfont}{\normalsize}
+\renewcommand{\cftsectionpagefont}{\cftsectionfont}
+
+% Subsection.
+\renewcommand{\cftsubsectionfont}{\normalsize\bfseries}
+\renewcommand{\cftsubsectionpagefont}{\cftsubsectionfont}
+
+% Subsubsection.
+\renewcommand{\cftsubsubsectionfont}{\normalsize}
+\renewcommand{\cftsubsubsectionpagefont}{\cftsubsubsectionfont}
+
+% Subsubsubsection.
+\renewcommand{\cftparagraphfont}{\normalsize\itshape}
+\renewcommand{\cftparagraphpagefont}{\cftparagraphfont}
 
 
 
@@ -379,234 +446,6 @@
 
 
 % ------------------------------------------------------------------------------
-% CITAÇÕES.
-% ------------------------------------------------------------------------------
-
-% Opção para citar autor já citado na frase imediatamente anterior.
-% Exibe, entre parênteses, apenas o ano e um comentário opcional.
-\newcommand{\citeagain}[2][]{(\citeyear{#2}\ifthenelse{\equal{#1}{}}{}{, #1})}
-
-% Reconfigura o ambiente de citação direta longa.
-\renewenvironment*{citacao}[1][default]{%
-	% Pula uma linha antes do bloco.
-	\vspace*{\baselineskip}
-
-	% Inicia um bloco com espaçamento entre-linhas simples.
-	\begin{SingleSpace}
-		% Diminui o tamanho da fonte para 10.
-		\footnotesize
-
-		% Ajusta a margem à esquerda para 4 cm.
-		\setlength{\leftskip}{\ABNTEXcitacaorecuo}
-
-		% Configura a fonte para itálico caso seja em outro idioma.
-		\ifthenelse{\not\equal{#1}{default}}{\itshape\selectlanguage{#1}}{}
-
-		% Remove o recuo do parágrafo.
-		\noindent
-}{%
-	% Finaliza o bloco de espaçamento entre-linhas simples.
-	\end{SingleSpace}
-
-	% Pula uma linha após o bloco.
-	\vspace*{\baselineskip}
-}
-
-
-
-% ------------------------------------------------------------------------------
-% ILUSTRAÇÕES, QUADROS E TABELAS.
-% ------------------------------------------------------------------------------
-
-% Define a quantidade de espaço ao redor de figuras, quadros e tabelas.
-\setlength{\floatsep}{1.3\baselineskip}
-\setlength{\intextsep}{1.3\baselineskip}
-\setlength{\textfloatsep}{1.3\baselineskip}
-
-% Declara um separador para os rótulo e as legendas.
-\DeclareCaptionLabelSeparator{dash}{\space--\space}
-
-\AtBeginDocument{%
-	% Configura a exibição das legendas em figuras, quadros e tabelas.
-	\captionsetup{%
-		% Espaçamento acima da legenda.
-		aboveskip=0pt,
-		% Espaçamento abaixo da legenda.
-		belowskip=3pt,
-		% Altera o distância entre as linhas.
-		font=singlespacing,
-		% Formato sem indentação.
-		format=plain,
-		% Altera para hífen o separador entre o rótulo e a legenda.
-		labelsep=dash,
-		% Indica que esta legenda será a de cima.
-		position=top,
-		% Não centraliza a legenda se tiver apenas uma linha.
-		singlelinecheck=false,
-		% Distância entre a legenda e o elemento em questão.
-		skip=6pt
-	}
-}
-
-% Declara uma fonte para usar nas legendas.
-\DeclareCaptionFont{ABNTEXfontereduzida}{\ABNTEXfontereduzida}
-
-\makeatletter
-
-% Configura a exibição da legenda da fonte em figuras, quadros e tabelas.
-\renewcommand{\fonte}[1]{%
-	% Altera as configurações da legenda da fonte.
-	\captionsetup{%
-		% Espaçamento acima da legenda.
-		aboveskip=0pt,
-		% Espaçamento abaixo da legenda.
-		belowskip=-9pt,
-		% Formato sem indentação.
-		format=plain,
-		% Configurações da fonte.
-		font={%
-			% Diminui o tamanho da fonte da legenda da fonte.
-			ABNTEXfontereduzida,
-			% Altera o distância entre as linhas.
-			singlespacing
-		},
-		% Altera para dois pontos o separador entre o rótulo e a legenda.
-		labelsep=colon,
-		% Indica que esta legenda será a de baixo.
-		position=bottom,
-		% Não centraliza a legenda se tiver apenas uma linha.
-		singlelinecheck=false,
-		% Distância entre a legenda e o elemento em questão.
-		skip=6pt,
-		% Adiciona um ponto final ao texto da legenda.
-		textformat=period
-	}
-
-	% Exibe a legenda da fonte.
-	\@makecaption{\fontename}{\ignorespaces#1}
-}
-
-% Configura o posicionamento padrão dos floats para as ilustrações e tabelas.
-\def\fps@figure{htbp!}
-\def\fps@table{htbp!}
-
-% Centraliza os floats em páginas dedicadas.
-\setlength{\@fptop}{0pt plus 1fil}
-\setlength{\@fpbot}{16pt plus 1fil}
-
-\makeatother
-
-% Configura o limiar que define se um float estará em uma página dedicada ou
-% não.
-\renewcommand{\floatpagefraction}{.8}
-
-
-
-% ------------------------------------------------------------------------------
-% ALÍNEAS.
-% ------------------------------------------------------------------------------
-
-% Configurações de alíneas.
-\setlist[alineas, 1]{%
-	% Alinha os indicadores à esquerda.
-	align=left,
-	% Nenhum espaçamento entre os itens.
-	itemsep=0cm,
-	% As alíneas devem ser indicadas alfabeticamente, em letra minúscula,
-	% seguida de parêntese e espaço.
-	label=\alph*)\space,
-	% Calcula o recuo dos indicadores com base no maior tamanho de indicador
-	% possível e em outras medidas.
-	labelindent=*,
-	% Remove o espaçamento à direita dos indicadores. O espaço é adicionado na
-	% própria definição do indicador.
-	labelsep=0cm,
-	% Utiliza-se recuo em relação à margem esquerda de mesmo tamanho do recuo de
-	% início de parágrafos do texto corrente.
-	leftmargin=\parindent,
-	% Recuo de início de parágrafos internos igual ao do texto corrente.
-	listparindent=\parindent,
-	% Nenhum espaçamento entre parágrafos.
-	parsep=0cm,
-	% Nenhum espaçamento antes do primeiro parágrafo e após o último.
-	partopsep=0cm,
-	% Deixa uma linha em branco entre as alíneas e o texto corrente.
-	topsep=\baselineskip,
-	% Define o maior tamanho de indicador possível.
-	widest=mm
-}
-
-% Configurações de subalíneas.
-\setlist[alineas, 2]{%
-	% Nenhum espaçamento entre os itens.
-	itemsep=0cm,
-	% As subalíneas devem ser indicadas por meia-risca.
-	label=--,
-	% Adiciona um espaçamento arbitrário após os indicadores.
-	labelsep=0.2cm,
-	% Calcula a margem esquerda com base na largura dos indicadores e outras
-	% medidas.
-	leftmargin=*,
-	% Recuo de parágrafos internos igual ao do texto corrente.
-	listparindent=\parindent,
-	% Nenhum espaçamento entre parágrafos.
-	parsep=0cm,
-	% Nenhum espaçamento antes do primeiro parágrafo e após o último.
-	partopsep=0cm,
-	% Nenhum espaçamento em branco entre as subalíneas e as alíneas.
-	topsep=0cm
-}
-
-
-
-% ------------------------------------------------------------------------------
-% PAGINAÇÃO.
-% ------------------------------------------------------------------------------
-
-% Estilo de cabeçalhos herdado da classe abnTeX2.
-\makepagestyle{abntheadings}
-
-% Os números de paginação devem estar no canto superior direito de todas as
-% páginas.
-\makeevenhead{abntheadings}{}{}{\ABNTEXfontereduzida\thepage}
-\makeoddhead{abntheadings}{}{}{\ABNTEXfontereduzida\thepage}
-
-
-
-% ------------------------------------------------------------------------------
-% FONTES DOS TÍTULOS.
-% ------------------------------------------------------------------------------
-
-% Títulos de primeiro e terceiro níveis são em negrito.
-\renewcommand{\ABNTEXpartfont}{\bfseries}
-\renewcommand{\ABNTEXchapterfont}{\bfseries}
-\renewcommand{\ABNTEXsubsectionfont}{\bfseries}
-
-% Títulos de segundo e quarto níveis são em fonte regular.
-\renewcommand{\ABNTEXsectionfont}{\mdseries}
-\renewcommand{\ABNTEXsubsubsectionfont}{\mdseries}
-
-% Títulos de quinto nível são em itálico.
-\renewcommand{\ABNTEXsubsubsubsectionfont}{\itshape}
-
-% Define a fonte dos títulos do último nível.
-\providecommand{\ABNTEXparagraphfont}{}
-\renewcommand{\ABNTEXparagraphfont}{\itshape}
-
-% O tamanho de todos os títulos deve ser 12pt.
-\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
-\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
-\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
-\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
-\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize}
-
-% Define o tamanho da fonte dos títulos do último nível.
-\providecommand{\ABNTEXparagraphfontsize}{}
-\renewcommand{\ABNTEXparagraphfontsize}{\normalsize}
-
-
-
-% ------------------------------------------------------------------------------
 % CONFIGURAÇÕES DOS TÍTULOS.
 % ------------------------------------------------------------------------------
 
@@ -659,40 +498,6 @@
 
 
 % ------------------------------------------------------------------------------
-% FONTES DO SUMÁRIO.
-% ------------------------------------------------------------------------------
-
-\makeatletter
-
-% Converte a fonte dos chapters e sections que ficam no sumário em maiúsculo.
-\patchcmd{\l@chapter}{#1}{\uppercase{#1}}{}{}
-\patchcmd{\l@section}{#1}{\uppercase{#1}}{}{}
-
-\makeatother
-
-% Chapter.
-\renewcommand{\cftchapterfont}{\normalsize\bfseries}
-\renewcommand{\cftchapterpagefont}{\cftchapterfont}
-
-% Section.
-\renewcommand{\cftsectionfont}{\normalsize}
-\renewcommand{\cftsectionpagefont}{\cftsectionfont}
-
-% Subsection.
-\renewcommand{\cftsubsectionfont}{\normalsize\bfseries}
-\renewcommand{\cftsubsectionpagefont}{\cftsubsectionfont}
-
-% Subsubsection.
-\renewcommand{\cftsubsubsectionfont}{\normalsize}
-\renewcommand{\cftsubsubsectionpagefont}{\cftsubsubsectionfont}
-
-% Subsubsubsection.
-\renewcommand{\cftparagraphfont}{\normalsize\itshape}
-\renewcommand{\cftparagraphpagefont}{\cftparagraphfont}
-
-
-
-% ------------------------------------------------------------------------------
 % CONFIGURAÇÕES DO SUMÁRIO.
 % ------------------------------------------------------------------------------
 
@@ -724,6 +529,20 @@
 \renewcommand{\numberline}[1]{\@cftbsnum#1\@cftasnum\space}
 
 \makeatother
+
+
+
+% ------------------------------------------------------------------------------
+% PAGINAÇÃO.
+% ------------------------------------------------------------------------------
+
+% Estilo de cabeçalhos herdado da classe abnTeX2.
+\makepagestyle{abntheadings}
+
+% Os números de paginação devem estar no canto superior direito de todas as
+% páginas.
+\makeevenhead{abntheadings}{}{}{\ABNTEXfontereduzida\thepage}
+\makeoddhead{abntheadings}{}{}{\ABNTEXfontereduzida\thepage}
 
 
 
@@ -1082,6 +901,187 @@
 	% Finaliza a página.
 	\cleardoublepage
 }
+
+
+
+% ------------------------------------------------------------------------------
+% CITAÇÕES.
+% ------------------------------------------------------------------------------
+
+% Opção para citar autor já citado na frase imediatamente anterior.
+% Exibe, entre parênteses, apenas o ano e um comentário opcional.
+\newcommand{\citeagain}[2][]{(\citeyear{#2}\ifthenelse{\equal{#1}{}}{}{, #1})}
+
+% Reconfigura o ambiente de citação direta longa.
+\renewenvironment*{citacao}[1][default]{%
+	% Pula uma linha antes do bloco.
+	\vspace*{\baselineskip}
+
+	% Inicia um bloco com espaçamento entre-linhas simples.
+	\begin{SingleSpace}
+		% Diminui o tamanho da fonte para 10.
+		\footnotesize
+
+		% Ajusta a margem à esquerda para 4 cm.
+		\setlength{\leftskip}{\ABNTEXcitacaorecuo}
+
+		% Configura a fonte para itálico caso seja em outro idioma.
+		\ifthenelse{\not\equal{#1}{default}}{\itshape\selectlanguage{#1}}{}
+
+		% Remove o recuo do parágrafo.
+		\noindent
+}{%
+	% Finaliza o bloco de espaçamento entre-linhas simples.
+	\end{SingleSpace}
+
+	% Pula uma linha após o bloco.
+	\vspace*{\baselineskip}
+}
+
+
+
+% ------------------------------------------------------------------------------
+% ALÍNEAS.
+% ------------------------------------------------------------------------------
+
+% Configurações de alíneas.
+\setlist[alineas, 1]{%
+	% Alinha os indicadores à esquerda.
+	align=left,
+	% Nenhum espaçamento entre os itens.
+	itemsep=0cm,
+	% As alíneas devem ser indicadas alfabeticamente, em letra minúscula,
+	% seguida de parêntese e espaço.
+	label=\alph*)\space,
+	% Calcula o recuo dos indicadores com base no maior tamanho de indicador
+	% possível e em outras medidas.
+	labelindent=*,
+	% Remove o espaçamento à direita dos indicadores. O espaço é adicionado na
+	% própria definição do indicador.
+	labelsep=0cm,
+	% Utiliza-se recuo em relação à margem esquerda de mesmo tamanho do recuo de
+	% início de parágrafos do texto corrente.
+	leftmargin=\parindent,
+	% Recuo de início de parágrafos internos igual ao do texto corrente.
+	listparindent=\parindent,
+	% Nenhum espaçamento entre parágrafos.
+	parsep=0cm,
+	% Nenhum espaçamento antes do primeiro parágrafo e após o último.
+	partopsep=0cm,
+	% Deixa uma linha em branco entre as alíneas e o texto corrente.
+	topsep=\baselineskip,
+	% Define o maior tamanho de indicador possível.
+	widest=mm
+}
+
+% Configurações de subalíneas.
+\setlist[alineas, 2]{%
+	% Nenhum espaçamento entre os itens.
+	itemsep=0cm,
+	% As subalíneas devem ser indicadas por meia-risca.
+	label=--,
+	% Adiciona um espaçamento arbitrário após os indicadores.
+	labelsep=0.2cm,
+	% Calcula a margem esquerda com base na largura dos indicadores e outras
+	% medidas.
+	leftmargin=*,
+	% Recuo de parágrafos internos igual ao do texto corrente.
+	listparindent=\parindent,
+	% Nenhum espaçamento entre parágrafos.
+	parsep=0cm,
+	% Nenhum espaçamento antes do primeiro parágrafo e após o último.
+	partopsep=0cm,
+	% Nenhum espaçamento em branco entre as subalíneas e as alíneas.
+	topsep=0cm
+}
+
+
+
+% ------------------------------------------------------------------------------
+% ILUSTRAÇÕES, QUADROS E TABELAS.
+% ------------------------------------------------------------------------------
+
+% Define a quantidade de espaço ao redor de figuras, quadros e tabelas.
+\setlength{\floatsep}{1.3\baselineskip}
+\setlength{\intextsep}{1.3\baselineskip}
+\setlength{\textfloatsep}{1.3\baselineskip}
+
+% Declara um separador para os rótulo e as legendas.
+\DeclareCaptionLabelSeparator{dash}{\space--\space}
+
+\AtBeginDocument{%
+	% Configura a exibição das legendas em figuras, quadros e tabelas.
+	\captionsetup{%
+		% Espaçamento acima da legenda.
+		aboveskip=0pt,
+		% Espaçamento abaixo da legenda.
+		belowskip=3pt,
+		% Altera o distância entre as linhas.
+		font=singlespacing,
+		% Formato sem indentação.
+		format=plain,
+		% Altera para hífen o separador entre o rótulo e a legenda.
+		labelsep=dash,
+		% Indica que esta legenda será a de cima.
+		position=top,
+		% Não centraliza a legenda se tiver apenas uma linha.
+		singlelinecheck=false,
+		% Distância entre a legenda e o elemento em questão.
+		skip=6pt
+	}
+}
+
+% Declara uma fonte para usar nas legendas.
+\DeclareCaptionFont{ABNTEXfontereduzida}{\ABNTEXfontereduzida}
+
+\makeatletter
+
+% Configura a exibição da legenda da fonte em figuras, quadros e tabelas.
+\renewcommand{\fonte}[1]{%
+	% Altera as configurações da legenda da fonte.
+	\captionsetup{%
+		% Espaçamento acima da legenda.
+		aboveskip=0pt,
+		% Espaçamento abaixo da legenda.
+		belowskip=-9pt,
+		% Formato sem indentação.
+		format=plain,
+		% Configurações da fonte.
+		font={%
+			% Diminui o tamanho da fonte da legenda da fonte.
+			ABNTEXfontereduzida,
+			% Altera o distância entre as linhas.
+			singlespacing
+		},
+		% Altera para dois pontos o separador entre o rótulo e a legenda.
+		labelsep=colon,
+		% Indica que esta legenda será a de baixo.
+		position=bottom,
+		% Não centraliza a legenda se tiver apenas uma linha.
+		singlelinecheck=false,
+		% Distância entre a legenda e o elemento em questão.
+		skip=6pt,
+		% Adiciona um ponto final ao texto da legenda.
+		textformat=period
+	}
+
+	% Exibe a legenda da fonte.
+	\@makecaption{\fontename}{\ignorespaces#1}
+}
+
+% Configura o posicionamento padrão dos floats para as ilustrações e tabelas.
+\def\fps@figure{htbp!}
+\def\fps@table{htbp!}
+
+% Centraliza os floats em páginas dedicadas.
+\setlength{\@fptop}{0pt plus 1fil}
+\setlength{\@fpbot}{16pt plus 1fil}
+
+\makeatother
+
+% Configura o limiar que define se um float estará em uma página dedicada ou
+% não.
+\renewcommand{\floatpagefraction}{.8}
 
 
 
