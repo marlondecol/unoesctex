@@ -256,7 +256,7 @@
 	% Procura pelo nome do arquivo mais o sufixo "b" para negrito.
 	BoldFont=*b,
 	% Tamanho reduzido para melhor apresentação.
-	Scale=0.8,
+	Scale=.8,
 	% Habilita ligatures.
 	Ligatures=TeX
 ]
@@ -365,13 +365,13 @@
 \linespread{1.3}
 
 % Aproxima os pontos das linhas pontilhadas nos sumários e listas.
-\renewcommand{\cftdotsep}{0.5}
+\renewcommand{\cftdotsep}{.5}
 
 % Define os espaços antes e depois de ambientes matemáticos.
-\setlength{\belowdisplayskip}{0.5em}
-\setlength{\belowdisplayshortskip}{0.5em}
-\setlength{\abovedisplayskip}{0.5em}
-\setlength{\abovedisplayshortskip}{0.5em}
+\setlength{\belowdisplayskip}{.5em}
+\setlength{\belowdisplayshortskip}{.5em}
+\setlength{\abovedisplayskip}{.5em}
+\setlength{\abovedisplayshortskip}{.5em}
 
 % Ajusta o espaçamento após os títulos dos resumos e abstracts.
 \setlength{\abstitleskip}{\baselineskip}
@@ -381,7 +381,7 @@
 \setlength{\afterchapskip}{\baselineskip}
 
 % Espaço entre as linhas em ambiente matemático.
-\setlength{\jot}{0.75em}
+\setlength{\jot}{.75em}
 
 % Recuo de parágrafo (tabulação).
 \setlength{\parindent}{1.25cm}
@@ -762,18 +762,18 @@
 	% Alinha os rótulos à esquerda.
 	align=parleft,
 	% Nenhum espaçamento entre os itens.
-	itemsep=0cm,
+	itemsep=0mm,
 	% Remove o espaçamento à direita dos rótulos.
-	labelsep=0cm,
+	labelsep=0mm,
 	% Define a largura reservada para os rótulos.
 	labelwidth=3cm,
 	% Calcula a margem esquerda com base na largura dos rótulos e outras
 	% medidas.
 	leftmargin=!,
 	% Nenhum espaçamento entre parágrafos.
-	parsep=0cm,
+	parsep=0mm,
 	% Nenhum espaçamento antes do primeiro item e após o último.
-	topsep=0cm
+	topsep=0mm
 }
 
 % Adiciona um item na lista de abreviações e siglas.
@@ -879,7 +879,7 @@
 	\end{center}
 
 	% Faz um espaçamento após o título.
-	\vspace{0.5em}
+	\vspace{.5em}
 
 	% Inicia o restante do sumario.
 	\@starttoc{toc}
@@ -949,7 +949,7 @@
 	% Alinha os indicadores à esquerda.
 	align=left,
 	% Nenhum espaçamento entre os itens.
-	itemsep=0cm,
+	itemsep=0mm,
 	% As alíneas devem ser indicadas alfabeticamente, em letra minúscula,
 	% seguida de parêntese e espaço.
 	label=\alph*)\space,
@@ -958,16 +958,16 @@
 	labelindent=*,
 	% Remove o espaçamento à direita dos indicadores. O espaço é adicionado na
 	% própria definição do indicador.
-	labelsep=0cm,
+	labelsep=0mm,
 	% Utiliza-se recuo em relação à margem esquerda de mesmo tamanho do recuo de
 	% início de parágrafos do texto corrente.
 	leftmargin=\parindent,
 	% Recuo de início de parágrafos internos igual ao do texto corrente.
 	listparindent=\parindent,
 	% Nenhum espaçamento entre parágrafos.
-	parsep=0cm,
+	parsep=0mm,
 	% Nenhum espaçamento antes do primeiro parágrafo e após o último.
-	partopsep=0cm,
+	partopsep=0mm,
 	% Deixa uma linha em branco entre as alíneas e o texto corrente.
 	topsep=\baselineskip,
 	% Define o maior tamanho de indicador possível.
@@ -977,22 +977,22 @@
 % Configurações de subalíneas.
 \setlist[alineas, 2]{%
 	% Nenhum espaçamento entre os itens.
-	itemsep=0cm,
+	itemsep=0mm,
 	% As subalíneas devem ser indicadas por meia-risca.
 	label=--,
 	% Adiciona um espaçamento arbitrário após os indicadores.
-	labelsep=0.2cm,
+	labelsep=2mm,
 	% Calcula a margem esquerda com base na largura dos indicadores e outras
 	% medidas.
 	leftmargin=*,
 	% Recuo de parágrafos internos igual ao do texto corrente.
 	listparindent=\parindent,
 	% Nenhum espaçamento entre parágrafos.
-	parsep=0cm,
+	parsep=0mm,
 	% Nenhum espaçamento antes do primeiro parágrafo e após o último.
-	partopsep=0cm,
+	partopsep=0mm,
 	% Nenhum espaçamento em branco entre as subalíneas e as alíneas.
-	topsep=0cm
+	topsep=0mm
 }
 
 
@@ -1219,7 +1219,7 @@
 	\includepdf[%
 		height=\textheight-2\baselineskip,
 		keepaspectratio,
-		offset=0.5cm -0.5cm,
+		offset=5mm -5mm,
 		% Imprime o título do apêndice e mantém o estilo de paginação.
 		pagecommand={\apendicechapter*{#1}\thispagestyle{abntheadings}},
 		pages=1,
@@ -1230,7 +1230,7 @@
 	\includepdf[%
 		height=\textheight-2\baselineskip,
 		keepaspectratio,
-		offset=0.5cm -0.5cm,
+		offset=5mm -5mm,
 		pages=2-,
 		width=\textwidth
 	]{#2}
@@ -1315,7 +1315,7 @@
 	\includepdf[%
 		height=\textheight-2\baselineskip,
 		keepaspectratio,
-		offset=0.5cm -0.5cm,
+		offset=5mm -5mm,
 		pagecommand={%
 			% Imprime o título do anexo e mantém o estilo de paginação.
 			\anexochapter*{#2}\thispagestyle{abntheadings}
@@ -1332,7 +1332,7 @@
 	\includepdf[%
 		height=\textheight-2\baselineskip,
 		keepaspectratio,
-		offset=0.5cm -0.5cm,
+		offset=5mm -5mm,
 		pagecommand={%
 			% Mantém o estilo de paginação.
 			\thispagestyle{abntheadings}
