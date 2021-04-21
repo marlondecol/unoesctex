@@ -809,7 +809,7 @@
 		\renewcommand*{\glsgroupskip}{}%
 
 		% Configura cada entrada como um item do ambiente de acrônimos.
-		\renewcommand*{\glossentry}[1]{\acronym{\glstarget{##1}{\glossentryname{##1}}} \glossentrydesc{##1}}
+		\renewcommand*{\glossentry}[1]{\acronym{\glstarget{##1}{\glossentryname{##1}}} \Glossentrydesc{##1}}
 	}
 
 	% Comando de atalho para impressão da lista de abreviações e siglas.
