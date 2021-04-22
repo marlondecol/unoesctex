@@ -89,18 +89,18 @@
 
 % Carrega a classe abnTeX2.
 \LoadClass[%
-	% O tamanho da fonte deve ser 12.
-	12pt,
-	% O tamanho da folha deve ser A4.
-	a4paper,
-	% Impressão em apenas uma face da folha.
-	oneside,
-	% Títulos de primeiro nível devem ser maiúsculos.
-	chapter=TITLE,
-	% Títulos de segundo nível também devem ser maiúsculos.
-	section=TITLE,
-	% Define o estilo do sumário.
-	sumario=tradicional
+    % O tamanho da fonte deve ser 12.
+    12pt,
+    % O tamanho da folha deve ser A4.
+    a4paper,
+    % Impressão em apenas uma face da folha.
+    oneside,
+    % Títulos de primeiro nível devem ser maiúsculos.
+    chapter=TITLE,
+    % Títulos de segundo nível também devem ser maiúsculos.
+    section=TITLE,
+    % Define o estilo do sumário.
+    sumario=tradicional
 ]{abntex2}
 
 
@@ -132,38 +132,38 @@
 % Utiliza o pacote `glossaries` se o método de processamento de abreviações e
 % siglas for o automático.
 \ifthenelse{\equal{\SistemaSiglas}{automatico}}{%
-	% Evita avisos relacionados a conflitos com outros pacotes.
-	\let\printglossary\relax
-	\let\theglossary\relax
-	\let\endtheglossary\relax
+    % Evita avisos relacionados a conflitos com outros pacotes.
+    \let\printglossary\relax
+    \let\theglossary\relax
+    \let\endtheglossary\relax
 
-	% Deve ser carregado antes do pacote `abntex2cite` por motivos internos.
-	\RequirePackage[%
-		% Habilita o processamento de acrônimos e comandos relacionados.
-		acronyms,
-		% Desabilita exibição das páginas de ocorrências dos acrônimos.
-		nonumberlist,
-		% Não coloca ponto final nas entradas da lista.
-		nopostdot,
-		% Permite utilizar comandos reduzidos.
-		shortcuts
-	]{glossaries}
+    % Deve ser carregado antes do pacote `abntex2cite` por motivos internos.
+    \RequirePackage[%
+        % Habilita o processamento de acrônimos e comandos relacionados.
+        acronyms,
+        % Desabilita exibição das páginas de ocorrências dos acrônimos.
+        nonumberlist,
+        % Não coloca ponto final nas entradas da lista.
+        nopostdot,
+        % Permite utilizar comandos reduzidos.
+        shortcuts
+    ]{glossaries}
 }{}
 
 % Referências e citações da ABNT.
 \RequirePackage[%
-	% Formata os grifos em negrito.
-	abnt-emphasize=bf,
-	% Substitui 3 ou mais autores por "et al".
-	abnt-etal-list=3,
-	% Prenomes exibidos por extenso.
-	abnt-full-initials=yes,
-	% Substitui títulos repetidos nas referências por linhas sublinhadas.
-	abnt-repeated-title-omit=yes,
-	% Nenhum pacote é usado para tratar URLs.
-	abnt-url-package=none,
-	% Usa o estilo de citação alfabético.
-	alf
+    % Formata os grifos em negrito.
+    abnt-emphasize=bf,
+    % Substitui 3 ou mais autores por "et al".
+    abnt-etal-list=3,
+    % Prenomes exibidos por extenso.
+    abnt-full-initials=yes,
+    % Substitui títulos repetidos nas referências por linhas sublinhadas.
+    abnt-repeated-title-omit=yes,
+    % Nenhum pacote é usado para tratar URLs.
+    abnt-url-package=none,
+    % Usa o estilo de citação alfabético.
+    alf
 ]{abntex2cite}
 
 
@@ -174,26 +174,26 @@
 
 % Cria uma label a partir do nome de um arquivo, sem a extensão.
 \newcommand{\labelfromfile}[2]{%
-	% Se há alguma barra na string informada,...
-	\IfSubStr{#2}{/}{%
-		% ... separa-a pela última ocorrência...
-		\StrCount{#2}{/}[\slashesnumber]
-		\StrCut[\slashesnumber]{#2}{/}\path\file
+    % Se há alguma barra na string informada,...
+    \IfSubStr{#2}{/}{%
+        % ... separa-a pela última ocorrência...
+        \StrCount{#2}{/}[\slashesnumber]
+        \StrCut[\slashesnumber]{#2}{/}\path\file
 
-		% ... e utiliza a substring da direita.
-		\let\filepart\file
-	% Caso contrário,...
-	}{%
-		% ... utiliza a string original informada.
-		\let\filepart#2
-	}
+        % ... e utiliza a substring da direita.
+        \let\filepart\file
+    % Caso contrário,...
+    }{%
+        % ... utiliza a string original informada.
+        \let\filepart#2
+    }
 
-	% Retira a extensão da string resultante, caso houver.
-	\StrCount{\filepart}{.}[\pointsnumber]
-	\StrCut[\pointsnumber]{\filepart}{.}\filename\extension
+    % Retira a extensão da string resultante, caso houver.
+    \StrCount{\filepart}{.}[\pointsnumber]
+    \StrCut[\pointsnumber]{\filepart}{.}\filename\extension
 
-	% Cria a label unindo o prefixo e nome do arquivo.
-	\label{#1:\filename}
+    % Cria a label unindo o prefixo e nome do arquivo.
+    \label{#1:\filename}
 }
 
 
@@ -232,33 +232,33 @@
 % Define a fonte principal, de corpo, de acordo com os parâmetros da classe
 % definidos pelo usuário.
 \setmainfont{\UnoescFont}[%
-	% Caminho até os arquivos da fonte.
-	Path=fontes/\UnoescFont/,
-	% Extensão dos arquivos.
-	Extension=.ttf,
-	% Procura pelo nome do arquivo mais o sufixo "b" para negrito.
-	BoldFont=*b,
-	% Procura pelo nome do arquivo mais o sufixo "i" para itálico.
-	ItalicFont=*i,
-	% Procura pelo nome do arquivo mais o sufixo "z" para negrito e itálico.
-	BoldItalicFont=*z,
-	% Habilita ligatures.
-	Ligatures=TeX
+    % Caminho até os arquivos da fonte.
+    Path=fontes/\UnoescFont/,
+    % Extensão dos arquivos.
+    Extension=.ttf,
+    % Procura pelo nome do arquivo mais o sufixo "b" para negrito.
+    BoldFont=*b,
+    % Procura pelo nome do arquivo mais o sufixo "i" para itálico.
+    ItalicFont=*i,
+    % Procura pelo nome do arquivo mais o sufixo "z" para negrito e itálico.
+    BoldItalicFont=*z,
+    % Habilita ligatures.
+    Ligatures=TeX
 ]
 
 % Define a fonte monoespaçada, de acordo com os parâmetros da classe definidos
 % pelo usuário.
 \setmonofont{\UnoescMono}[%
-	% Caminho até os arquivos da fonte.
-	Path=fontes/\UnoescMono/,
-	% Extensão dos arquivos.
-	Extension=.ttf,
-	% Procura pelo nome do arquivo mais o sufixo "b" para negrito.
-	BoldFont=*b,
-	% Tamanho reduzido para melhor apresentação.
-	Scale=.8,
-	% Habilita ligatures.
-	Ligatures=TeX
+    % Caminho até os arquivos da fonte.
+    Path=fontes/\UnoescMono/,
+    % Extensão dos arquivos.
+    Extension=.ttf,
+    % Procura pelo nome do arquivo mais o sufixo "b" para negrito.
+    BoldFont=*b,
+    % Tamanho reduzido para melhor apresentação.
+    Scale=.8,
+    % Habilita ligatures.
+    Ligatures=TeX
 ]
 
 % Define a fonte para ambientes matemáticos, de acordo com os parâmetros da
@@ -266,16 +266,16 @@
 % Caso a fonte definida seja a `latin`, nenhuma configuração adicional é
 % realizada.
 \ifthenelse{\equal{\UnoescMath}{latin}}{}{%
-	\setmathfont{\UnoescMath-math}[%
-		% Caminho até os arquivos da fonte.
-		Path=fontes/\UnoescMath/,
-		% Extensão dos arquivos.
-		Extension=.otf,
-		% Procura pelo nome do arquivo mais o sufixo "b" para negrito.
-		BoldFont=*b,
-		% Habilita ligatures.
-		Ligatures=TeX
-	]
+    \setmathfont{\UnoescMath-math}[%
+        % Caminho até os arquivos da fonte.
+        Path=fontes/\UnoescMath/,
+        % Extensão dos arquivos.
+        Extension=.otf,
+        % Procura pelo nome do arquivo mais o sufixo "b" para negrito.
+        BoldFont=*b,
+        % Habilita ligatures.
+        Ligatures=TeX
+    ]
 }
 
 
@@ -394,16 +394,16 @@
 
 % Configurações dos links.
 \hypersetup{%
-	% Profundidade máxima ao listar os bookmarks do arquivo PDF.
-	bookmarksdepth=5,
-	% Remove as bordas ao redor de links.
-	colorlinks=true,
-	% Citações na mesma cor do texto.
-	citecolor=.,
-	% Links na mesma cor do texto.
-	linkcolor=.,
-	% URLs na mesma cor do texto.
-	urlcolor=.
+    % Profundidade máxima ao listar os bookmarks do arquivo PDF.
+    bookmarksdepth=5,
+    % Remove as bordas ao redor de links.
+    colorlinks=true,
+    % Citações na mesma cor do texto.
+    citecolor=.,
+    % Links na mesma cor do texto.
+    linkcolor=.,
+    % URLs na mesma cor do texto.
+    urlcolor=.
 }
 
 
@@ -417,30 +417,30 @@
 
 % Ajusta títulos em português.
 \addto\captionsbrazil{%
-	\providecommand{\quadroname}{Quadro}
-	\renewcommand{\acronymname}{Lista de abrevia\c{c}\~{o}es e siglas}
-	\renewcommand{\figurename}{Ilustra\c{c}\~{a}o}
+    \providecommand{\quadroname}{Quadro}
+    \renewcommand{\acronymname}{Lista de abrevia\c{c}\~{o}es e siglas}
+    \renewcommand{\figurename}{Ilustra\c{c}\~{a}o}
 }
 
 % Ajusta títulos em inglês.
 \addto\captionsenglish{%
-	\providecommand{\quadroname}{Frame}
-	\renewcommand{\acronymname}{Acronyms}
-	\renewcommand{\figurename}{Ilustration}
+    \providecommand{\quadroname}{Frame}
+    \renewcommand{\acronymname}{Acronyms}
+    \renewcommand{\figurename}{Ilustration}
 }
 
 % Ajusta rótulos em português.
 \addto\extrasbrazil{%
-	\providecommand{\quadroautorefname}{Quadro}
-	\renewcommand{\figureautorefname}{Ilustra\c{c}\~{a}o}
-	\renewcommand{\tableautorefname}{Tabela}
+    \providecommand{\quadroautorefname}{Quadro}
+    \renewcommand{\figureautorefname}{Ilustra\c{c}\~{a}o}
+    \renewcommand{\tableautorefname}{Tabela}
 }
 
 % Ajusta rótulos em inglês.
 \addto\extrasenglish{%
-	\providecommand{\quadroautorefname}{Frame}
-	\renewcommand{\figureautorefname}{Ilustration}
-	\renewcommand{\tableautorefname}{Table}
+    \providecommand{\quadroautorefname}{Frame}
+    \renewcommand{\figureautorefname}{Ilustration}
+    \renewcommand{\tableautorefname}{Table}
 }
 
 
@@ -552,40 +552,40 @@
 
 % Refatoração do comando de impressão da capa.
 \renewcommand{\imprimircapa}{%
-	\begin{capa}
-		% Centraliza todo o conteúdo.
-		\centering
+    \begin{capa}
+        % Centraliza todo o conteúdo.
+        \centering
 
-		% O espaçamento entre-linhas deve ser simples.
-		\SingleSpace
+        % O espaçamento entre-linhas deve ser simples.
+        \SingleSpace
 
-		% Imprime o nome da instituição.
-		\textbf{\MakeUppercase\imprimirinstituicao}
+        % Imprime o nome da instituição.
+        \textbf{\MakeUppercase\imprimirinstituicao}
 
-		\vspace*{10\baselineskip}
+        \vspace*{10\baselineskip}
 
-		% Imprime o nome do autor.
-		\textbf{\MakeUppercase\imprimirautor}
+        % Imprime o nome do autor.
+        \textbf{\MakeUppercase\imprimirautor}
 
-		\vspace*{11\baselineskip}
+        \vspace*{11\baselineskip}
 
-		\textbf{%
-			% Imprime o título do trabalho.
-			\MakeUppercase\imprimirtitulo
-			% Imprime o subtítulo, se houver.
-			\ifthenelse{\equal{\imprimirsubtitulo}{}}{}{%
-				: \imprimirsubtitulo
-			}
-		}
+        \textbf{%
+            % Imprime o título do trabalho.
+            \MakeUppercase\imprimirtitulo
+            % Imprime o subtítulo, se houver.
+            \ifthenelse{\equal{\imprimirsubtitulo}{}}{}{%
+                : \imprimirsubtitulo
+            }
+        }
 
-		\vspace*{\fill}
+        \vspace*{\fill}
 
-		% Imprime local e data.
-		\textbf{\MakeUppercase\imprimirlocal}\par
-		\textbf{\imprimirdata}
+        % Imprime local e data.
+        \textbf{\MakeUppercase\imprimirlocal}\par
+        \textbf{\imprimirdata}
 
-		\vspace*{\baselineskip}
-	\end{capa}
+        \vspace*{\baselineskip}
+    \end{capa}
 }
 
 
@@ -596,49 +596,49 @@
 
 % Refatoração do comando de impressão da folha de rosto.
 \renewcommand{\imprimirfolhaderosto}{%
-	\begin{folhaderosto}
-		% Centraliza todo o conteúdo.
-		\centering
+    \begin{folhaderosto}
+        % Centraliza todo o conteúdo.
+        \centering
 
-		% O espaçamento entre-linhas deve ser simples.
-		\SingleSpace
+        % O espaçamento entre-linhas deve ser simples.
+        \SingleSpace
 
-		% Imprime o nome do autor.
-		\MakeUppercase\imprimirautor
+        % Imprime o nome do autor.
+        \MakeUppercase\imprimirautor
 
-		\vspace*{15\baselineskip}
+        \vspace*{15\baselineskip}
 
-		% Imprime o título do trabalho.
-		\MakeUppercase\imprimirtitulo
-		% Imprime o subtítulo, se houver.
-		\ifthenelse{\equal{\imprimirsubtitulo}{}}{}{%
-			: \imprimirsubtitulo
-		}
+        % Imprime o título do trabalho.
+        \MakeUppercase\imprimirtitulo
+        % Imprime o subtítulo, se houver.
+        \ifthenelse{\equal{\imprimirsubtitulo}{}}{}{%
+            : \imprimirsubtitulo
+        }
 
-		\vspace*{5\baselineskip}
+        \vspace*{5\baselineskip}
 
-		% Imprime o preâmbulo, caso ele foi definido.
-		\ifthenelse{\equal{\imprimirpreambulo}{}}{}{%
-			\hfill\begin{minipage}{10cm}
-				\imprimirpreambulo
-			\end{minipage}
-		}
+        % Imprime o preâmbulo, caso ele foi definido.
+        \ifthenelse{\equal{\imprimirpreambulo}{}}{}{%
+            \hfill\begin{minipage}{10cm}
+                \imprimirpreambulo
+            \end{minipage}
+        }
 
-		\vspace*{2\baselineskip}
+        \vspace*{2\baselineskip}
 
-		% Imprime o nome do orientador.
-		\begin{flushleft}
-			\imprimirorientadorRotulo\space\imprimirorientador\par
-		\end{flushleft}
+        % Imprime o nome do orientador.
+        \begin{flushleft}
+            \imprimirorientadorRotulo\space\imprimirorientador\par
+        \end{flushleft}
 
-		\vspace*{\fill}
+        \vspace*{\fill}
 
-		% Imprime local e data.
-		\imprimirlocal\par
-		\imprimirdata
+        % Imprime local e data.
+        \imprimirlocal\par
+        \imprimirdata
 
-		\vspace*{\baselineskip}
-	\end{folhaderosto}
+        \vspace*{\baselineskip}
+    \end{folhaderosto}
 }
 
 
@@ -658,17 +658,17 @@
 
 % Refatoração do comando de impressão da lista de ilustrações.
 \newcommand{\imprimirfiguras}{%
-	% Adiciona a lista de ilustrações aos bookmarks.
-	\pdfbookmark[0]{\listfigurename}{lof}
+    % Adiciona a lista de ilustrações aos bookmarks.
+    \pdfbookmark[0]{\listfigurename}{lof}
 
-	% Imprime a lista de ilustrações.
-	\listoffigures*
+    % Imprime a lista de ilustrações.
+    \listoffigures*
 
-	% Ajusta o espaçamento após o título da lista.
-	\addtocontents{lof}{\vspace*{\baselineskip}}
+    % Ajusta o espaçamento após o título da lista.
+    \addtocontents{lof}{\vspace*{\baselineskip}}
 
-	% Finaliza a página.
-	\cleardoublepage
+    % Finaliza a página.
+    \cleardoublepage
 }
 
 
@@ -705,17 +705,17 @@
 
 % Refatoração do comando de impressão da lista de quadros.
 \newcommand{\imprimirquadros}{%
-	% Adiciona a lista de quadros aos bookmarks.
-	\pdfbookmark[0]{\listofquadrosname}{loq}
+    % Adiciona a lista de quadros aos bookmarks.
+    \pdfbookmark[0]{\listofquadrosname}{loq}
 
-	% Imprime a lista de quadros.
-	\listofquadros*
+    % Imprime a lista de quadros.
+    \listofquadros*
 
-	% Ajusta o espaçamento após o título da lista.
-	\addtocontents{loq}{\vspace*{\baselineskip}}
+    % Ajusta o espaçamento após o título da lista.
+    \addtocontents{loq}{\vspace*{\baselineskip}}
 
-	% Finaliza a página.
-	\cleardoublepage
+    % Finaliza a página.
+    \cleardoublepage
 }
 
 
@@ -735,17 +735,17 @@
 
 % Refatoração do comando de impressão da lista de tabelas.
 \newcommand{\imprimirtabelas}{%
-	% Adiciona a lista de tabelas aos bookmarks.
-	\pdfbookmark[0]{\listtablename}{lot}
+    % Adiciona a lista de tabelas aos bookmarks.
+    \pdfbookmark[0]{\listtablename}{lot}
 
-	% Imprime a lista de tabelas.
-	\listoftables*
+    % Imprime a lista de tabelas.
+    \listoftables*
 
-	% Ajusta o espaçamento após o título da lista.
-	\addtocontents{lot}{\vspace*{\baselineskip}}
+    % Ajusta o espaçamento após o título da lista.
+    \addtocontents{lot}{\vspace*{\baselineskip}}
 
-	% Finaliza a página.
-	\cleardoublepage
+    % Finaliza a página.
+    \cleardoublepage
 }
 
 
@@ -759,21 +759,21 @@
 
 % Configuração do ambiente de abreviações e siglas.
 \setlist[acronymize, 1]{%
-	% Alinha os rótulos à esquerda.
-	align=parleft,
-	% Nenhum espaçamento entre os itens.
-	itemsep=0mm,
-	% Remove o espaçamento à direita dos rótulos.
-	labelsep=0mm,
-	% Define a largura reservada para os rótulos.
-	labelwidth=3cm,
-	% Calcula a margem esquerda com base na largura dos rótulos e outras
-	% medidas.
-	leftmargin=!,
-	% Nenhum espaçamento entre parágrafos.
-	parsep=0mm,
-	% Nenhum espaçamento antes do primeiro item e após o último.
-	topsep=0mm
+    % Alinha os rótulos à esquerda.
+    align=parleft,
+    % Nenhum espaçamento entre os itens.
+    itemsep=0mm,
+    % Remove o espaçamento à direita dos rótulos.
+    labelsep=0mm,
+    % Define a largura reservada para os rótulos.
+    labelwidth=3cm,
+    % Calcula a margem esquerda com base na largura dos rótulos e outras
+    % medidas.
+    leftmargin=!,
+    % Nenhum espaçamento entre parágrafos.
+    parsep=0mm,
+    % Nenhum espaçamento antes do primeiro item e após o último.
+    topsep=0mm
 }
 
 % Adiciona um item na lista de abreviações e siglas.
@@ -782,81 +782,81 @@
 % Comandos e configurações para o processamento automático de abreviações e
 % siglas.
 \ifthenelse{\equal{\SistemaSiglas}{automatico}}{%
-	% Inclui o arquivo com as definições de acrônimos. Deve ser utilizada no
-	% preâmbulo.
-	\newcommand{\inserirsiglas}[1]{%
-		\makeglossaries
-		\loadglsentries{#1}
-	}
+    % Inclui o arquivo com as definições de acrônimos. Deve ser utilizada no
+    % preâmbulo.
+    \newcommand{\inserirsiglas}[1]{%
+        \makeglossaries
+        \loadglsentries{#1}
+    }
 
-	% Define um novo estilo para a lista de acrônimos.
-	\newglossarystyle{unoescsiglas}{%
-		% Adiciona o título da lista aos bookmarks e ajusta seu espaçamento.
-		\renewcommand*{\glossarysection}[2][]{%
-			% Imprime o título da lista.
-			\pretextualchapter{##2}
+    % Define um novo estilo para a lista de acrônimos.
+    \newglossarystyle{unoescsiglas}{%
+        % Adiciona o título da lista aos bookmarks e ajusta seu espaçamento.
+        \renewcommand*{\glossarysection}[2][]{%
+            % Imprime o título da lista.
+            \pretextualchapter{##2}
 
-			% Ajusta o espaçamento após o título da lista.
-			\vspace*{\baselineskip}
-		}
+            % Ajusta o espaçamento após o título da lista.
+            \vspace*{\baselineskip}
+        }
 
-		% Utiliza o mesmo ambiente de acrônimos do modo manual.
-		\renewenvironment{theglossary}{\begin{acronymize}}{\end{acronymize}}
+        % Utiliza o mesmo ambiente de acrônimos do modo manual.
+        \renewenvironment{theglossary}{\begin{acronymize}}{\end{acronymize}}
 
-		% Redefine alguns atributos.
-		\renewcommand*{\glossaryheader}{}%
-		\renewcommand*{\glsgroupheading}[1]{}%
-		\renewcommand*{\glsgroupskip}{}%
+        % Redefine alguns atributos.
+        \renewcommand*{\glossaryheader}{}%
+        \renewcommand*{\glsgroupheading}[1]{}%
+        \renewcommand*{\glsgroupskip}{}%
 
-		% Configura cada entrada como um item do ambiente de acrônimos.
-		\renewcommand*{\glossentry}[1]{\acronym{\glstarget{##1}{\glossentryname{##1}}} \Glossentrydesc{##1}}
-	}
+        % Configura cada entrada como um item do ambiente de acrônimos.
+        \renewcommand*{\glossentry}[1]{\acronym{\glstarget{##1}{\glossentryname{##1}}} \Glossentrydesc{##1}}
+    }
 
-	% Comando de atalho para impressão da lista de abreviações e siglas.
-	\newcommand{\imprimirsiglas}{%
-		% Imprime a lista de abreviações e siglas.
-		\printacronyms[style=unoescsiglas]
+    % Comando de atalho para impressão da lista de abreviações e siglas.
+    \newcommand{\imprimirsiglas}{%
+        % Imprime a lista de abreviações e siglas.
+        \printacronyms[style=unoescsiglas]
 
-		% Finaliza a página.
-		\cleardoublepage
-	}
+        % Finaliza a página.
+        \cleardoublepage
+    }
 }{}
 
 % Comandos e configurações para o processamento manual de abreviações e siglas.
 \ifthenelse{\equal{\SistemaSiglas}{manual}}{%
-	% Comando para salvar o caminho do arquivo das abreviações e siglas.
-	\providecommand{\arquivosiglas}{}
+    % Comando para salvar o caminho do arquivo das abreviações e siglas.
+    \providecommand{\arquivosiglas}{}
 
-	% Inclui o arquivo com as definições de acrônimos. Deve ser utilizada no
-	% preâmbulo.
-	\newcommand{\inserirsiglas}[1]{%
-		\renewcommand{\arquivosiglas}{#1}
-	}
+    % Inclui o arquivo com as definições de acrônimos. Deve ser utilizada no
+    % preâmbulo.
+    \newcommand{\inserirsiglas}[1]{%
+        \renewcommand{\arquivosiglas}{#1}
+    }
 
-	% Refatoração do ambiente da lista de abreviações e siglas.
-	\renewenvironment{siglas}{%
-		% Imprime o título da lista.
-		\pretextualchapter{\acronymname}
+    % Refatoração do ambiente da lista de abreviações e siglas.
+    \renewenvironment{siglas}{%
+        % Imprime o título da lista.
+        \pretextualchapter{\acronymname}
 
-		% Ajusta o espaçamento após o título da lista.
-		\vspace*{\baselineskip}
+        % Ajusta o espaçamento após o título da lista.
+        \vspace*{\baselineskip}
 
-		% Inicia a lista de abreviações e siglas.
-		\begin{acronymize}
-	}{%
-		% Finaliza a lista de abreviações e siglas.
-		\end{acronymize}
+        % Inicia a lista de abreviações e siglas.
+        \begin{acronymize}
+    }{%
+        % Finaliza a lista de abreviações e siglas.
+        \end{acronymize}
 
-		% Finaliza a página.
-		\cleardoublepage
-	}
+        % Finaliza a página.
+        \cleardoublepage
+    }
 
-	% Comando de atalho para impressão da lista de abreviações e siglas.
-	\newcommand{\imprimirsiglas}{%
-		\begin{siglas}%
-			\input{\arquivosiglas}\unskip
-		\end{siglas}
-	}
+    % Comando de atalho para impressão da lista de abreviações e siglas.
+    \newcommand{\imprimirsiglas}{%
+        \begin{siglas}%
+            \input{\arquivosiglas}\unskip
+        \end{siglas}
+    }
 }{}
 
 
@@ -869,37 +869,37 @@
 
 % Configura o título do sumário.
 \renewcommand{\tableofcontents}{%
-	% Centraliza.
-	\begin{center}%
-		% Altera o estilo da fonte.
-		\ABNTEXchapterfont%
+    % Centraliza.
+    \begin{center}%
+        % Altera o estilo da fonte.
+        \ABNTEXchapterfont%
 
-		% Imprime o título em maiúsculo.
-		\MakeUppercase\contentsname
-	\end{center}
+        % Imprime o título em maiúsculo.
+        \MakeUppercase\contentsname
+    \end{center}
 
-	% Faz um espaçamento após o título.
-	\vspace{.5em}
+    % Faz um espaçamento após o título.
+    \vspace{.5em}
 
-	% Inicia o restante do sumario.
-	\@starttoc{toc}
+    % Inicia o restante do sumario.
+    \@starttoc{toc}
 }
 
 \makeatother
 
 % Comando de atalho para impressão do sumário.
 \newcommand{\imprimirsumario}{%
-	% Adiciona o sumário aos bookmarks.
-	\pdfbookmark[0]{\contentsname}{toc}
+    % Adiciona o sumário aos bookmarks.
+    \pdfbookmark[0]{\contentsname}{toc}
 
-	% Imprime o sumário.
-	\tableofcontents
+    % Imprime o sumário.
+    \tableofcontents
 
-	% Ajusta o espaçamento após o título do sumário.
-	\addtocontents{toc}{\vspace*{\baselineskip}}
+    % Ajusta o espaçamento após o título do sumário.
+    \addtocontents{toc}{\vspace*{\baselineskip}}
 
-	% Finaliza a página.
-	\cleardoublepage
+    % Finaliza a página.
+    \cleardoublepage
 }
 
 
@@ -914,28 +914,28 @@
 
 % Reconfigura o ambiente de citação direta longa.
 \renewenvironment*{citacao}[1][default]{%
-	% Pula uma linha antes do bloco.
-	\vspace*{\baselineskip}
+    % Pula uma linha antes do bloco.
+    \vspace*{\baselineskip}
 
-	% Inicia um bloco com espaçamento entre-linhas simples.
-	\begin{SingleSpace}
-		% Diminui o tamanho da fonte para 10.
-		\footnotesize
+    % Inicia um bloco com espaçamento entre-linhas simples.
+    \begin{SingleSpace}
+        % Diminui o tamanho da fonte para 10.
+        \footnotesize
 
-		% Ajusta a margem à esquerda para 4 cm.
-		\setlength{\leftskip}{\ABNTEXcitacaorecuo}
+        % Ajusta a margem à esquerda para 4 cm.
+        \setlength{\leftskip}{\ABNTEXcitacaorecuo}
 
-		% Configura a fonte para itálico caso seja em outro idioma.
-		\ifthenelse{\not\equal{#1}{default}}{\itshape\selectlanguage{#1}}{}
+        % Configura a fonte para itálico caso seja em outro idioma.
+        \ifthenelse{\not\equal{#1}{default}}{\itshape\selectlanguage{#1}}{}
 
-		% Remove o recuo do parágrafo.
-		\noindent
+        % Remove o recuo do parágrafo.
+        \noindent
 }{%
-	% Finaliza o bloco de espaçamento entre-linhas simples.
-	\end{SingleSpace}
+    % Finaliza o bloco de espaçamento entre-linhas simples.
+    \end{SingleSpace}
 
-	% Pula uma linha após o bloco.
-	\vspace*{\baselineskip}
+    % Pula uma linha após o bloco.
+    \vspace*{\baselineskip}
 }
 
 
@@ -946,53 +946,53 @@
 
 % Configurações de alíneas.
 \setlist[alineas, 1]{%
-	% Alinha os indicadores à esquerda.
-	align=left,
-	% Nenhum espaçamento entre os itens.
-	itemsep=0mm,
-	% As alíneas devem ser indicadas alfabeticamente, em letra minúscula,
-	% seguida de parêntese e espaço.
-	label=\alph*)\space,
-	% Calcula o recuo dos indicadores com base no maior tamanho de indicador
-	% possível e em outras medidas.
-	labelindent=*,
-	% Remove o espaçamento à direita dos indicadores. O espaço é adicionado na
-	% própria definição do indicador.
-	labelsep=0mm,
-	% Utiliza-se recuo em relação à margem esquerda de mesmo tamanho do recuo de
-	% início de parágrafos do texto corrente.
-	leftmargin=\parindent,
-	% Recuo de início de parágrafos internos igual ao do texto corrente.
-	listparindent=\parindent,
-	% Nenhum espaçamento entre parágrafos.
-	parsep=0mm,
-	% Nenhum espaçamento antes do primeiro parágrafo e após o último.
-	partopsep=0mm,
-	% Deixa uma linha em branco entre as alíneas e o texto corrente.
-	topsep=\baselineskip,
-	% Define o maior tamanho de indicador possível.
-	widest=mm
+    % Alinha os indicadores à esquerda.
+    align=left,
+    % Nenhum espaçamento entre os itens.
+    itemsep=0mm,
+    % As alíneas devem ser indicadas alfabeticamente, em letra minúscula,
+    % seguida de parêntese e espaço.
+    label=\alph*)\space,
+    % Calcula o recuo dos indicadores com base no maior tamanho de indicador
+    % possível e em outras medidas.
+    labelindent=*,
+    % Remove o espaçamento à direita dos indicadores. O espaço é adicionado na
+    % própria definição do indicador.
+    labelsep=0mm,
+    % Utiliza-se recuo em relação à margem esquerda de mesmo tamanho do recuo de
+    % início de parágrafos do texto corrente.
+    leftmargin=\parindent,
+    % Recuo de início de parágrafos internos igual ao do texto corrente.
+    listparindent=\parindent,
+    % Nenhum espaçamento entre parágrafos.
+    parsep=0mm,
+    % Nenhum espaçamento antes do primeiro parágrafo e após o último.
+    partopsep=0mm,
+    % Deixa uma linha em branco entre as alíneas e o texto corrente.
+    topsep=\baselineskip,
+    % Define o maior tamanho de indicador possível.
+    widest=mm
 }
 
 % Configurações de subalíneas.
 \setlist[alineas, 2]{%
-	% Nenhum espaçamento entre os itens.
-	itemsep=0mm,
-	% As subalíneas devem ser indicadas por meia-risca.
-	label=--,
-	% Adiciona um espaçamento arbitrário após os indicadores.
-	labelsep=2mm,
-	% Calcula a margem esquerda com base na largura dos indicadores e outras
-	% medidas.
-	leftmargin=*,
-	% Recuo de parágrafos internos igual ao do texto corrente.
-	listparindent=\parindent,
-	% Nenhum espaçamento entre parágrafos.
-	parsep=0mm,
-	% Nenhum espaçamento antes do primeiro parágrafo e após o último.
-	partopsep=0mm,
-	% Nenhum espaçamento em branco entre as subalíneas e as alíneas.
-	topsep=0mm
+    % Nenhum espaçamento entre os itens.
+    itemsep=0mm,
+    % As subalíneas devem ser indicadas por meia-risca.
+    label=--,
+    % Adiciona um espaçamento arbitrário após os indicadores.
+    labelsep=2mm,
+    % Calcula a margem esquerda com base na largura dos indicadores e outras
+    % medidas.
+    leftmargin=*,
+    % Recuo de parágrafos internos igual ao do texto corrente.
+    listparindent=\parindent,
+    % Nenhum espaçamento entre parágrafos.
+    parsep=0mm,
+    % Nenhum espaçamento antes do primeiro parágrafo e após o último.
+    partopsep=0mm,
+    % Nenhum espaçamento em branco entre as subalíneas e as alíneas.
+    topsep=0mm
 }
 
 
@@ -1010,27 +1010,27 @@
 \DeclareCaptionLabelSeparator{dash}{\space--\space}
 
 \AtBeginDocument{%
-	% Configura a exibição das legendas em figuras, quadros e tabelas.
-	\captionsetup{%
-		% Espaçamento acima da legenda.
-		aboveskip=0pt,
-		% Espaçamento abaixo da legenda.
-		belowskip=3pt,
-		% Altera o distância entre as linhas.
-		font=singlespacing,
-		% Formato sem indentação.
-		format=plain,
-		% Altera para hífen o separador entre o rótulo e a legenda.
-		labelsep=dash,
-		% Indica que esta legenda será a de cima.
-		position=top,
-		% Não centraliza a legenda se tiver apenas uma linha.
-		singlelinecheck=false,
-		% Distância entre a legenda e o elemento em questão.
-		skip=6pt,
-		% Adiciona um ponto final ao texto da legenda.
-		textformat=period
-	}
+    % Configura a exibição das legendas em figuras, quadros e tabelas.
+    \captionsetup{%
+        % Espaçamento acima da legenda.
+        aboveskip=0pt,
+        % Espaçamento abaixo da legenda.
+        belowskip=3pt,
+        % Altera o distância entre as linhas.
+        font=singlespacing,
+        % Formato sem indentação.
+        format=plain,
+        % Altera para hífen o separador entre o rótulo e a legenda.
+        labelsep=dash,
+        % Indica que esta legenda será a de cima.
+        position=top,
+        % Não centraliza a legenda se tiver apenas uma linha.
+        singlelinecheck=false,
+        % Distância entre a legenda e o elemento em questão.
+        skip=6pt,
+        % Adiciona um ponto final ao texto da legenda.
+        textformat=period
+    }
 }
 
 % Declara uma fonte para usar nas legendas.
@@ -1040,35 +1040,35 @@
 
 % Configura a exibição da legenda da fonte em figuras, quadros e tabelas.
 \renewcommand{\fonte}[1]{%
-	% Altera as configurações da legenda da fonte.
-	\captionsetup{%
-		% Espaçamento acima da legenda.
-		aboveskip=0pt,
-		% Espaçamento abaixo da legenda.
-		belowskip=-9pt,
-		% Formato sem indentação.
-		format=plain,
-		% Configurações da fonte.
-		font={%
-			% Diminui o tamanho da fonte da legenda da fonte.
-			ABNTEXfontereduzida,
-			% Altera o distância entre as linhas.
-			singlespacing
-		},
-		% Altera para dois pontos o separador entre o rótulo e a legenda.
-		labelsep=colon,
-		% Indica que esta legenda será a de baixo.
-		position=bottom,
-		% Não centraliza a legenda se tiver apenas uma linha.
-		singlelinecheck=false,
-		% Distância entre a legenda e o elemento em questão.
-		skip=6pt,
-		% Adiciona um ponto final ao texto da legenda.
-		textformat=period
-	}
+    % Altera as configurações da legenda da fonte.
+    \captionsetup{%
+        % Espaçamento acima da legenda.
+        aboveskip=0pt,
+        % Espaçamento abaixo da legenda.
+        belowskip=-9pt,
+        % Formato sem indentação.
+        format=plain,
+        % Configurações da fonte.
+        font={%
+            % Diminui o tamanho da fonte da legenda da fonte.
+            ABNTEXfontereduzida,
+            % Altera o distância entre as linhas.
+            singlespacing
+        },
+        % Altera para dois pontos o separador entre o rótulo e a legenda.
+        labelsep=colon,
+        % Indica que esta legenda será a de baixo.
+        position=bottom,
+        % Não centraliza a legenda se tiver apenas uma linha.
+        singlelinecheck=false,
+        % Distância entre a legenda e o elemento em questão.
+        skip=6pt,
+        % Adiciona um ponto final ao texto da legenda.
+        textformat=period
+    }
 
-	% Exibe a legenda da fonte.
-	\@makecaption{\fontename}{\ignorespaces#1}
+    % Exibe a legenda da fonte.
+    \@makecaption{\fontename}{\ignorespaces#1}
 }
 
 % Configura o posicionamento padrão dos floats para as ilustrações e tabelas.
@@ -1092,20 +1092,20 @@
 % ------------------------------------------------------------------------------
 
 \renewcommand{\bibsection}{%
-	% Imprime o título das referências.
-	\chapter*{\raggedright\bibname}
+    % Imprime o título das referências.
+    \chapter*{\raggedright\bibname}
 
-	% Pula uma linha após o título.
-	\vspace*{.75em}
+    % Pula uma linha após o título.
+    \vspace*{.75em}
 
-	\bibmark
+    \bibmark
 
-	% Adiciona as referências no sumário.
-	\ifnobibintoc\else
-		\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeTextUppercase{\bibname}}{\bibname}}
-	\fi
+    % Adiciona as referências no sumário.
+    \ifnobibintoc\else
+        \addcontentsline{toc}{chapter}{\texorpdfstring{\MakeTextUppercase{\bibname}}{\bibname}}
+    \fi
 
-	\prebibhook
+    \prebibhook
 }
 
 
@@ -1115,24 +1115,24 @@
 % ------------------------------------------------------------------------------
 
 \newcommand{\imprimircentralizado}[1]{%
-	% Vai para uma nova página.
-	\newpage
+    % Vai para uma nova página.
+    \newpage
 
-	% Centraliza na página.
-	\begin{center}%
-		\vspace*{\fill}
+    % Centraliza na página.
+    \begin{center}%
+        \vspace*{\fill}
 
-		% Altera o estilo da fonte.
-		\ABNTEXchapterfont%
+        % Altera o estilo da fonte.
+        \ABNTEXchapterfont%
 
-		% Imprime o título em maiúsculo.
-		\uppercase{#1}
+        % Imprime o título em maiúsculo.
+        \uppercase{#1}
 
-		\vspace*{\fill}
-	\end{center}
+        \vspace*{\fill}
+    \end{center}
 
-	% Finaliza a página.
-	\cleardoublepage
+    % Finaliza a página.
+    \cleardoublepage
 }
 
 % Comandos para impressão do capítulo de apêndices e/ou anexos.
@@ -1163,78 +1163,78 @@
 
 % Insere um apêndice a partir de um arquivo LaTeX.
 \newcommand{\imprimirapendice}[2]{%
-	% Vai para uma nova página.
-	\newpage
+    % Vai para uma nova página.
+    \newpage
 
-	% Ajusta a númeração da página para o bookmark.
-	\phantomsection
+    % Ajusta a númeração da página para o bookmark.
+    \phantomsection
 
-	% Incrementa o contador da numeração do título.
-	\refstepcounter{apendicechapter}\labelfromfile{apx}{#2}
+    % Incrementa o contador da numeração do título.
+    \refstepcounter{apendicechapter}\labelfromfile{apx}{#2}
 
-	% Cria um grupo para os apêndices nos bookmarks.
-	\ifthenelse{\boolean{apendicesbookmarknotexists}}{%
-		\pdfbookmark[-1]{Apêndices}{toc}\setboolean{apendicesbookmarknotexists}{false}
-	}{}
+    % Cria um grupo para os apêndices nos bookmarks.
+    \ifthenelse{\boolean{apendicesbookmarknotexists}}{%
+        \pdfbookmark[-1]{Apêndices}{toc}\setboolean{apendicesbookmarknotexists}{false}
+    }{}
 
-	% Adiciona o título ao sumário.
-	\addcontentsline{toc}{chapter}{%
-		\texorpdfstring{AP\^ENDICE\space\theapendicechapter\space--\space\MakeTextUppercase{#1}}{#1}
-	}
+    % Adiciona o título ao sumário.
+    \addcontentsline{toc}{chapter}{%
+        \texorpdfstring{AP\^ENDICE\space\theapendicechapter\space--\space\MakeTextUppercase{#1}}{#1}
+    }
 
-	% Imprime o título do apêndice.
-	\apendicechapter*{#1}
+    % Imprime o título do apêndice.
+    \apendicechapter*{#1}
 
-	% Insere o conteúdo.
-	\input{#2}\unskip
+    % Insere o conteúdo.
+    \input{#2}\unskip
 
-	% Finaliza a página.
-	\cleardoublepage
+    % Finaliza a página.
+    \cleardoublepage
 }
 
 % Insere um apêndice a partir de um arquivo PDF.
 \newcommand{\imprimirapendicepdf}[2]{%
-	% Vai para uma nova página.
-	\newpage
+    % Vai para uma nova página.
+    \newpage
 
-	% Ajusta a númeração da página para o bookmark.
-	\phantomsection
+    % Ajusta a númeração da página para o bookmark.
+    \phantomsection
 
-	% Incrementa o contador da numeração do título.
-	\refstepcounter{apendicechapter}\labelfromfile{apx}{#2}
+    % Incrementa o contador da numeração do título.
+    \refstepcounter{apendicechapter}\labelfromfile{apx}{#2}
 
-	% Cria um grupo para os apêndices nos bookmarks.
-	\ifthenelse{\boolean{apendicesbookmarknotexists}}{%
-		\pdfbookmark[-1]{Apêndices}{toc}\setboolean{apendicesbookmarknotexists}{false}
-	}{}
+    % Cria um grupo para os apêndices nos bookmarks.
+    \ifthenelse{\boolean{apendicesbookmarknotexists}}{%
+        \pdfbookmark[-1]{Apêndices}{toc}\setboolean{apendicesbookmarknotexists}{false}
+    }{}
 
-	% Adiciona o título ao sumário.
-	\addcontentsline{toc}{chapter}{%
-		\texorpdfstring{AP\^ENDICE\space\theapendicechapter\space--\space\MakeTextUppercase{#1}}{#1}
-	}
+    % Adiciona o título ao sumário.
+    \addcontentsline{toc}{chapter}{%
+        \texorpdfstring{AP\^ENDICE\space\theapendicechapter\space--\space\MakeTextUppercase{#1}}{#1}
+    }
 
-	% Insere a primeira página do arquivo.
-	\includepdf[%
-		height=\textheight-2\baselineskip,
-		keepaspectratio,
-		offset=5mm -5mm,
-		% Imprime o título do apêndice e mantém o estilo de paginação.
-		pagecommand={\apendicechapter*{#1}\thispagestyle{abntheadings}},
-		pages=1,
-		width=\textwidth
-	]{#2}
+    % Insere a primeira página do arquivo.
+    \includepdf[%
+        height=\textheight-2\baselineskip,
+        keepaspectratio,
+        offset=5mm -5mm,
+        % Imprime o título do apêndice e mantém o estilo de paginação.
+        pagecommand={\apendicechapter*{#1}\thispagestyle{abntheadings}},
+        pages=1,
+        width=\textwidth
+    ]{#2}
 
-	% Insere as demais páginas, se houver.
-	\includepdf[%
-		height=\textheight-2\baselineskip,
-		keepaspectratio,
-		offset=5mm -5mm,
-		pages=2-,
-		width=\textwidth
-	]{#2}
+    % Insere as demais páginas, se houver.
+    \includepdf[%
+        height=\textheight-2\baselineskip,
+        keepaspectratio,
+        offset=5mm -5mm,
+        pages=2-,
+        width=\textwidth
+    ]{#2}
 
-	% Finaliza a página.
-	\cleardoublepage
+    % Finaliza a página.
+    \cleardoublepage
 }
 
 
@@ -1246,105 +1246,105 @@
 % Insere a fonte de um anexo. Os parâmetros são os mesmos dos utilizados pelos
 % comandos de citação.
 \newcommand{\fonteanexo}[2][]{%
-	% Diminui o tamanho da fonte.
-	\ABNTEXfontereduzida
+    % Diminui o tamanho da fonte.
+    \ABNTEXfontereduzida
 
-	% Constrói o texto da fonte.
-	\noindent\fontename:\space\ignorespaces\citeonline[#1]{#2}.
+    % Constrói o texto da fonte.
+    \noindent\fontename:\space\ignorespaces\citeonline[#1]{#2}.
 }
 
 % Insere um anexo a partir de um arquivo LaTeX. A fonte do documento deve ser
 % inserida neste arquivo de forma manual.
 \newcommand{\imprimiranexo}[2]{%
-	% Vai para uma nova página.
-	\newpage
+    % Vai para uma nova página.
+    \newpage
 
-	% Ajusta a númeração da página para o bookmark.
-	\phantomsection
+    % Ajusta a númeração da página para o bookmark.
+    \phantomsection
 
-	% Incrementa o contador da numeração do título.
-	\refstepcounter{anexochapter}\labelfromfile{anx}{#2}
+    % Incrementa o contador da numeração do título.
+    \refstepcounter{anexochapter}\labelfromfile{anx}{#2}
 
-	% Cria um grupo para os anexos nos bookmarks.
-	\ifthenelse{\boolean{anexosbookmarknotexists}}{%
-		\pdfbookmark[-1]{Anexos}{toc}\setboolean{anexosbookmarknotexists}{false}
-	}{}
+    % Cria um grupo para os anexos nos bookmarks.
+    \ifthenelse{\boolean{anexosbookmarknotexists}}{%
+        \pdfbookmark[-1]{Anexos}{toc}\setboolean{anexosbookmarknotexists}{false}
+    }{}
 
-	% Adiciona o título ao sumário.
-	\addcontentsline{toc}{chapter}{%
-		\texorpdfstring{ANEXO\space\theanexochapter\space--\space\MakeTextUppercase{#1}}{#1}
-	}
+    % Adiciona o título ao sumário.
+    \addcontentsline{toc}{chapter}{%
+        \texorpdfstring{ANEXO\space\theanexochapter\space--\space\MakeTextUppercase{#1}}{#1}
+    }
 
-	% Imprime o título do anexo.
-	\anexochapter*{#1}
+    % Imprime o título do anexo.
+    \anexochapter*{#1}
 
-	% Insere o conteúdo.
-	\input{#2}\unskip
+    % Insere o conteúdo.
+    \input{#2}\unskip
 
-	% Finaliza a página.
-	\cleardoublepage
+    % Finaliza a página.
+    \cleardoublepage
 }
 
 % Insere um anexo a partir de um arquivo PDF.
 \newcommand{\imprimiranexopdf}[4][0]{%
-	% Vai para uma nova página.
-	\newpage
+    % Vai para uma nova página.
+    \newpage
 
-	% Ajusta a númeração da página para o bookmark.
-	\phantomsection
+    % Ajusta a númeração da página para o bookmark.
+    \phantomsection
 
-	% Incrementa o contador da numeração do título.
-	\refstepcounter{anexochapter}\labelfromfile{anx}{#3}
+    % Incrementa o contador da numeração do título.
+    \refstepcounter{anexochapter}\labelfromfile{anx}{#3}
 
-	% Cria um grupo para os anexos nos bookmarks.
-	\ifthenelse{\boolean{anexosbookmarknotexists}}{%
-		\pdfbookmark[-1]{Anexos}{toc}\setboolean{anexosbookmarknotexists}{false}
-	}{}
+    % Cria um grupo para os anexos nos bookmarks.
+    \ifthenelse{\boolean{anexosbookmarknotexists}}{%
+        \pdfbookmark[-1]{Anexos}{toc}\setboolean{anexosbookmarknotexists}{false}
+    }{}
 
-	% Adiciona o título ao sumário.
-	\addcontentsline{toc}{chapter}{%
-		\texorpdfstring{ANEXO\space\theanexochapter\space--\space\MakeTextUppercase{#2}}{#2}
-	}
+    % Adiciona o título ao sumário.
+    \addcontentsline{toc}{chapter}{%
+        \texorpdfstring{ANEXO\space\theanexochapter\space--\space\MakeTextUppercase{#2}}{#2}
+    }
 
-	% Reinicia a numeração das páginas para o valor informado.
-	\setcounter{anexopage}{#1}
+    % Reinicia a numeração das páginas para o valor informado.
+    \setcounter{anexopage}{#1}
 
-	% Insere a primeira página do arquivo.
-	\includepdf[%
-		height=\textheight-2\baselineskip,
-		keepaspectratio,
-		offset=5mm -5mm,
-		pagecommand={%
-			% Imprime o título do anexo e mantém o estilo de paginação.
-			\anexochapter*{#2}\thispagestyle{abntheadings}
-			% Imprime a fonte do documento no final da página.
-			\vspace*{\fill}
-			\fonteanexo[\ifnum#1>0 p. \theanexopage\fi]{#4}
-			\vspace*{\baselineskip}
-		},
-		pages=1,
-		width=\textwidth
-	]{#3}
+    % Insere a primeira página do arquivo.
+    \includepdf[%
+        height=\textheight-2\baselineskip,
+        keepaspectratio,
+        offset=5mm -5mm,
+        pagecommand={%
+            % Imprime o título do anexo e mantém o estilo de paginação.
+            \anexochapter*{#2}\thispagestyle{abntheadings}
+            % Imprime a fonte do documento no final da página.
+            \vspace*{\fill}
+            \fonteanexo[\ifnum#1>0 p. \theanexopage\fi]{#4}
+            \vspace*{\baselineskip}
+        },
+        pages=1,
+        width=\textwidth
+    ]{#3}
 
-	% Insere as demais páginas, se houver.
-	\includepdf[%
-		height=\textheight-2\baselineskip,
-		keepaspectratio,
-		offset=5mm -5mm,
-		pagecommand={%
-			% Mantém o estilo de paginação.
-			\thispagestyle{abntheadings}
-			% Incrementa a numeração da página da fonte.
-			\stepcounter{anexopage}
-			% Imprime a fonte do documento no final de todas as páginas.
-			\vspace*{\fill}
-			\fonteanexo[\ifnum#1>0 p. \theanexopage\fi]{#4}
-			\vspace*{\baselineskip}
-		},
-		pages=2-,
-		width=\textwidth
-	]{#3}
+    % Insere as demais páginas, se houver.
+    \includepdf[%
+        height=\textheight-2\baselineskip,
+        keepaspectratio,
+        offset=5mm -5mm,
+        pagecommand={%
+            % Mantém o estilo de paginação.
+            \thispagestyle{abntheadings}
+            % Incrementa a numeração da página da fonte.
+            \stepcounter{anexopage}
+            % Imprime a fonte do documento no final de todas as páginas.
+            \vspace*{\fill}
+            \fonteanexo[\ifnum#1>0 p. \theanexopage\fi]{#4}
+            \vspace*{\baselineskip}
+        },
+        pages=2-,
+        width=\textwidth
+    ]{#3}
 
-	% Finaliza a página.
-	\cleardoublepage
+    % Finaliza a página.
+    \cleardoublepage
 }
