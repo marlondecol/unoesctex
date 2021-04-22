@@ -1092,15 +1092,11 @@
 % ------------------------------------------------------------------------------
 
 \renewcommand{\bibsection}{%
-	% Alinha o título a esquerda.
-	\let\OldABNTEXchapterfont\ABNTEXchapterfont
-	\renewcommand{\ABNTEXchapterfont}{\OldABNTEXchapterfont\raggedright}
-
 	% Imprime o título das referências.
-	\chapter*{\bibname}
+	\chapter*{\raggedright\bibname}
 
 	% Pula uma linha após o título.
-	\vspace*{\baselineskip}
+	\vspace*{.75em}
 
 	\bibmark
 
