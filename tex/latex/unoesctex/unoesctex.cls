@@ -763,10 +763,10 @@
     align=parleft,
     % Nenhum espaçamento entre os itens.
     itemsep=0mm,
-    % Remove o espaçamento à direita dos rótulos.
-    labelsep=0mm,
+    % Adiciona um espaçamento arbitrário à direita dos rótulos.
+    labelsep=5mm,
     % Define a largura reservada para os rótulos.
-    labelwidth=3cm,
+    labelwidth=2.5cm,
     % Calcula a margem esquerda com base na largura dos rótulos e outras
     % medidas.
     leftmargin=!,
@@ -777,7 +777,7 @@
 }
 
 % Adiciona um item na lista de abreviações e siglas.
-\newcommand{\acronym}[1]{\item[#1]--}
+\newcommand{\acronym}[2]{\item[#1]#2}
 
 % Comandos e configurações para o processamento automático de abreviações e
 % siglas.
@@ -809,7 +809,7 @@
         \renewcommand*{\glsgroupskip}{}%
 
         % Configura cada entrada como um item do ambiente de acrônimos.
-        \renewcommand*{\glossentry}[1]{\acronym{\glstarget{##1}{\glossentryname{##1}}} \Glossentrydesc{##1}}
+        \renewcommand*{\glossentry}[1]{\acronym{\glstarget{##1}{\glossentryname{##1}}}{\Glossentrydesc{##1}}}
     }
 
     % Comando de atalho para impressão da lista de abreviações e siglas.
@@ -980,7 +980,7 @@
     itemsep=0mm,
     % As subalíneas devem ser indicadas por meia-risca.
     label=--,
-    % Adiciona um espaçamento arbitrário após os indicadores.
+    % Adiciona um espaçamento arbitrário à direita dos indicadores.
     labelsep=2mm,
     % Calcula a margem esquerda com base na largura dos indicadores e outras
     % medidas.
