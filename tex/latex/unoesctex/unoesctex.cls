@@ -392,6 +392,10 @@
 % Espaço entre as linhas de uma moldura e seu conteúdo.
 \setlength{\fboxsep}{0em}
 
+% Atribui a largura de um espaço a uma nova constante de medida.
+\newlength{\spacewidth}
+\settowidth{\spacewidth}{\space}
+
 % Configurações dos links.
 \hypersetup{%
     % Profundidade máxima ao listar os bookmarks do arquivo PDF.
@@ -764,9 +768,9 @@
     % Nenhum espaçamento entre os itens.
     itemsep=0mm,
     % Adiciona um espaçamento arbitrário à direita dos rótulos.
-    labelsep=5mm,
+    labelsep=\spacewidth,
     % Define a largura reservada para os rótulos.
-    labelwidth=2.5cm,
+    labelwidth=3cm,
     % Calcula a margem esquerda com base na largura dos rótulos e outras
     % medidas.
     leftmargin=!,
@@ -777,7 +781,7 @@
 }
 
 % Adiciona um item na lista de abreviações e siglas.
-\newcommand{\acronym}[2]{\item[#1]#2}
+\newcommand{\acronym}[2]{\item[#1]--\space#2}
 
 % Comandos e configurações para o processamento automático de abreviações e
 % siglas.
@@ -981,7 +985,7 @@
     % As subalíneas devem ser indicadas por meia-risca.
     label=--,
     % Adiciona um espaçamento arbitrário à direita dos indicadores.
-    labelsep=2mm,
+    labelsep=\spacewidth,
     % Calcula a margem esquerda com base na largura dos indicadores e outras
     % medidas.
     leftmargin=*,
