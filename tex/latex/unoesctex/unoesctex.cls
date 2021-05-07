@@ -75,6 +75,9 @@
 % XITS Math.
 \DeclareOption{xits}{\renewcommand{\UnoescMath}{xits}}
 
+% Permite quebras de linha em URLs longas nas referências.
+\PassOptionsToPackage{hyphens}{url}
+
 % Repassa o restante dos parâmetros para a classe abnTeX2.
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{abntex2/abntex2}}
 
