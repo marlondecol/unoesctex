@@ -955,7 +955,7 @@
 \setlist[alineas, 1]{%
     % Alinha os indicadores à esquerda.
     align=left,
-    % Nenhum espaçamento entre os itens.
+    % Nenhum espaçamento entre as alíneas.
     itemsep=0mm,
     % As alíneas devem ser indicadas alfabeticamente, em letra minúscula,
     % seguida de parêntese e espaço.
@@ -983,7 +983,7 @@
 
 % Configurações de subalíneas.
 \setlist[alineas, 2]{%
-    % Nenhum espaçamento entre os itens.
+    % Nenhum espaçamento entre as subalíneas.
     itemsep=0mm,
     % As subalíneas devem ser indicadas por meia-risca.
     label=--,
@@ -999,6 +999,54 @@
     % Nenhum espaçamento antes do primeiro parágrafo e após o último.
     partopsep=0mm,
     % Nenhum espaçamento em branco entre as subalíneas e as alíneas.
+    topsep=0mm
+}
+
+
+
+% ------------------------------------------------------------------------------
+% LISTAS NÃO ORDENADAS.
+% ------------------------------------------------------------------------------
+
+% Configurações de itens.
+\setlist[itemize, 1]{
+    % Nenhum espaçamento entre os itens.
+    itemsep=0mm,
+    % Recua os indicadores a partir da esquerda.
+    labelindent=7.5mm,
+    % Calcula o espaço à direita dos indicadores com base no recuo à esquerda.
+    labelsep=*,
+    % Utiliza-se recuo em relação à margem esquerda de mesmo tamanho do recuo de
+    % início de parágrafos do texto corrente.
+    leftmargin=\parindent,
+    % Recuo de início de parágrafos internos igual ao do texto corrente.
+    listparindent=\parindent,
+    % Nenhum espaçamento entre parágrafos.
+    parsep=0mm,
+    % Nenhum espaçamento antes do primeiro parágrafo e após o último.
+    partopsep=0mm,
+    % Nenhum espaçamento em branco entre as subalíneas e as alíneas.
+    topsep=\baselineskip
+}
+
+% Configurações de subitens.
+\setlist[itemize, 2]{
+    % Nenhum espaçamento entre os subitens.
+    itemsep=0mm,
+    % Os subitens devem ser indicados por meia-risca.
+    label=--,
+    % Adiciona um espaçamento arbitrário à direita dos indicadores.
+    labelsep=\spacewidth,
+    % Calcula a margem esquerda com base na largura dos indicadores e outras
+    % medidas.
+    leftmargin=*,
+    % Recuo de parágrafos internos igual ao do texto corrente.
+    listparindent=\parindent,
+    % Nenhum espaçamento entre parágrafos.
+    parsep=0mm,
+    % Nenhum espaçamento antes do primeiro parágrafo e após o último.
+    partopsep=0mm,
+    % Nenhum espaçamento em branco entre os subitens e os itens.
     topsep=0mm
 }
 
