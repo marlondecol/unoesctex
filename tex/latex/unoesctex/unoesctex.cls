@@ -919,6 +919,11 @@
 % Exibe, entre parênteses, apenas o ano e um comentário opcional.
 \newcommand{\citeagain}[2][]{(\citeyear{#2}\ifthenelse{\equal{#1}{}}{}{, #1})}
 
+% Comando para citar o próprio autor do trabalho, como normalmente é feito em
+% fontes de ilustrações, quadros e tabelas, por exemplo. Caso não for informado
+% um ano específico, utiliza o que estiver definido no preâmbulo do trabalho.
+\newcommand{\citemyself}[1][\imprimirdata]{o autor (#1)}
+
 % Reconfigura o ambiente de citação direta longa.
 \renewenvironment*{citacao}[1][default]{%
     % Pula uma linha antes do bloco.
@@ -926,7 +931,7 @@
 
     % Inicia um bloco com espaçamento entre-linhas simples.
     \begin{SingleSpace}
-        % Diminui o tamanho da fonte para 10.
+        % Diminui o tamanho da fonte para 10 pt.
         \footnotesize
 
         % Ajusta a margem à esquerda para 4 cm.
