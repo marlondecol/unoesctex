@@ -439,14 +439,24 @@
 % Ajusta rótulos em português.
 \addto\extrasbrazil{%
     \providecommand{\quadroautorefname}{Quadro}
+    \renewcommand{\chapterautorefname}{Capítulo}
     \renewcommand{\figureautorefname}{Ilustra\c{c}\~{a}o}
+    \renewcommand{\paragraphautorefname}{Subse{\c c}\~{a}o}
+    \renewcommand{\sectionautorefname}{Se{\c c}\~{a}o}
+    \renewcommand{\subsectionautorefname}{Subse{\c c}\~{a}o}
+    \renewcommand{\subsubsectionautorefname}{Subse{\c c}\~{a}o}
     \renewcommand{\tableautorefname}{Tabela}
 }
 
 % Ajusta rótulos em inglês.
 \addto\extrasenglish{%
     \providecommand{\quadroautorefname}{Frame}
+    \renewcommand{\chapterautorefname}{Chapter}
     \renewcommand{\figureautorefname}{Ilustration}
+    \renewcommand{\paragraphautorefname}{Subsection}
+    \renewcommand{\sectionautorefname}{Section}
+    \renewcommand{\subsectionautorefname}{Subsection}
+    \renewcommand{\subsubsectionautorefname}{Subsection}
     \renewcommand{\tableautorefname}{Table}
 }
 
