@@ -113,6 +113,8 @@
 % ------------------------------------------------------------------------------
 
 % Carrega os pacotes necessários.
+\RequirePackage{amsfonts}
+\RequirePackage{amsmath}
 \RequirePackage{etoolbox}
 \RequirePackage{fontspec}
 \RequirePackage{hyperxmp}
@@ -209,22 +211,6 @@
 % universidade.
 \definecolor{unoesc-blue}{RGB}{15, 109, 182}
 \definecolor{unoesc-green}{RGB}{111, 194, 121}
-
-
-
-% ------------------------------------------------------------------------------
-% SÍMBOLOS MATEMÁTICOS.
-% ------------------------------------------------------------------------------
-
-% Operadores trigonométricos em português.
-\DeclareMathOperator{\sen}{sen}
-\DeclareMathOperator{\tg}{tg}
-\DeclareMathOperator{\cotg}{cotg}
-\DeclareMathOperator{\cosec}{cosec}
-\DeclareMathOperator{\arcsen}{arcsen}
-\DeclareMathOperator{\arctg}{arctg}
-\DeclareMathOperator{\senh}{senh}
-\DeclareMathOperator{\tgh}{tgh}
 
 
 
@@ -370,21 +356,12 @@
 % Aproxima os pontos das linhas pontilhadas nos sumários e listas.
 \renewcommand{\cftdotsep}{.5}
 
-% Define os espaços antes e depois de ambientes matemáticos.
-\setlength{\belowdisplayskip}{.5\baselineskip}
-\setlength{\belowdisplayshortskip}{.5\baselineskip}
-\setlength{\abovedisplayskip}{.5\baselineskip}
-\setlength{\abovedisplayshortskip}{.5\baselineskip}
-
 % Ajusta o espaçamento após os títulos dos resumos e abstracts.
 \setlength{\abstitleskip}{\baselineskip}
 
 % Espaçamento antes e depois dos capítulos.
 \setlength{\beforechapskip}{0em}
 \setlength{\afterchapskip}{\baselineskip}
-
-% Espaço entre as linhas em ambiente matemático.
-\setlength{\jot}{.75\baselineskip}
 
 % Recuo de parágrafo (tabulação).
 \setlength{\parindent}{1.25cm}
@@ -1154,6 +1131,33 @@
 % Configura o limiar que define se um float estará em uma página dedicada ou
 % não.
 \renewcommand{\floatpagefraction}{.8}
+
+
+
+% ------------------------------------------------------------------------------
+% FÓRMULAS E EQUAÇÕES.
+% ------------------------------------------------------------------------------
+
+\AtBeginDocument{%
+    % Define os espaçamentos verticais antes e depois de ambientes matemáticos.
+    \setlength{\abovedisplayskip}{.63\baselineskip}
+    \setlength{\belowdisplayskip}{1.5\baselineskip}
+    \setlength{\abovedisplayshortskip}{\abovedisplayskip}
+    \setlength{\belowdisplayshortskip}{\belowdisplayskip}
+}
+
+% Espaço entre as linhas em ambientes matemáticos.
+\setlength{\jot}{.75\baselineskip}
+
+% Operadores trigonométricos em português.
+\DeclareMathOperator{\sen}{sen}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\cotg}{cotg}
+\DeclareMathOperator{\cosec}{cosec}
+\DeclareMathOperator{\arcsen}{arcsen}
+\DeclareMathOperator{\arctg}{arctg}
+\DeclareMathOperator{\senh}{senh}
+\DeclareMathOperator{\tgh}{tgh}
 
 
 
