@@ -119,7 +119,6 @@
 \RequirePackage{fontspec}
 \RequirePackage{hyperxmp}
 \RequirePackage{indentfirst}
-\RequirePackage{lastpage}
 \RequirePackage{pdfpages}
 \RequirePackage{silence}
 \RequirePackage{titlesec}
@@ -514,13 +513,17 @@
 % Faz com que os pontos cheguem até o número da página no sumário.
 \renewcommand{\@pnumwidth}{0ex{}}
 
-% Anula a margem interna direita do sumário para justificar títulos com quebra
-% de linha.
-\renewcommand{\@tocrmarg}{0ex}
-
 % Ajusta os espaços entre os números e os títulos.
 \renewcommand{\chapternumberline}[1]{\@cftbsnum#1\@cftasnum\space}
 \renewcommand{\numberline}[1]{\@cftbsnum#1\@cftasnum\space}
+
+\bgroup
+
+% Alinha os títulos à esquerda, em vez de justificá-los.
+\advance\@flushglue by \@tocrmarg
+\xdef\@tocrmarg{\the\@flushglue}
+
+\egroup
 
 \makeatother
 
