@@ -1135,6 +1135,14 @@
 % não.
 \renewcommand{\floatpagefraction}{.8}
 
+% Define uma constante para a altura máxima dos floats.
+\newlength{\maxheight}
+\setlength{\maxheight}{\textheight-2cm}
+
+% Define uma constante para a largura máxima dos floats.
+\newlength{\maxwidth}
+\setlength{\maxwidth}{\textwidth-2pt}
+
 
 
 % ------------------------------------------------------------------------------
@@ -1292,22 +1300,22 @@
 
     % Insere a primeira página do arquivo.
     \includepdf[%
-        height=\textheight-2\baselineskip,
+        height=\maxheight,
         keepaspectratio,
         offset=5mm -5mm,
         % Imprime o título do apêndice e mantém o estilo de paginação.
         pagecommand={\apendicechapter*{#1}\thispagestyle{abntheadings}},
         pages=1,
-        width=\textwidth
+        width=\maxwidth
     ]{#2}
 
     % Insere as demais páginas, se houver.
     \includepdf[%
-        height=\textheight-2\baselineskip,
+        height=\maxheight,
         keepaspectratio,
         offset=5mm -5mm,
         pages=2-,
-        width=\textwidth
+        width=\maxwidth
     ]{#2}
 
     % Finaliza a página.
@@ -1388,7 +1396,7 @@
 
     % Insere a primeira página do arquivo.
     \includepdf[%
-        height=\textheight-2\baselineskip,
+        height=\maxheight,
         keepaspectratio,
         offset=5mm -5mm,
         pagecommand={%
@@ -1400,12 +1408,12 @@
             \vspace*{\baselineskip}
         },
         pages=1,
-        width=\textwidth
+        width=\maxwidth
     ]{#3}
 
     % Insere as demais páginas, se houver.
     \includepdf[%
-        height=\textheight-2\baselineskip,
+        height=\maxheight,
         keepaspectratio,
         offset=5mm -5mm,
         pagecommand={%
@@ -1419,7 +1427,7 @@
             \vspace*{\baselineskip}
         },
         pages=2-,
-        width=\textwidth
+        width=\maxwidth
     ]{#3}
 
     % Finaliza a página.
