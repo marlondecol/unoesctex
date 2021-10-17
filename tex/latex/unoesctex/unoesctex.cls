@@ -549,6 +549,9 @@
 
 % Refatoração do comando de impressão da capa.
 \renewcommand{\imprimircapa}{%
+    % Renomeia o rótulo de página da capa exibido pelos leitores de PDF.
+    \renewcommand{\thepage}{Capa}
+
     \begin{capa}
         % Centraliza todo o conteúdo.
         \centering
@@ -583,6 +586,9 @@
 
         \vspace*{\baselineskip}
     \end{capa}
+
+    % Restaura o formato do contador de páginas para as páginas seguintes.
+    \pagenumbering{arabic}
 }
 
 
