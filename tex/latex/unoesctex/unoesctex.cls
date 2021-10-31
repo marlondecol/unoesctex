@@ -133,6 +133,30 @@
 % acima.
 \RequirePackage{caption}
 
+% Declara uma fonte para ser usada em algumas legendas.
+\DeclareCaptionFont{ABNTEXfontereduzida}{\ABNTEXfontereduzida}
+
+% Declara separador para ser utilizado entre a numeração e a legenda de
+% subfloats.
+\DeclareCaptionLabelSeparator{parenthesis}{)\space}
+
+% Aplica algumas configurações às numerações do pacote subcaption ao carregá-lo.
+\RequirePackage[%
+    % Espaçamento entre a legenda e o texto.
+    belowskip=0pt,
+    % Configurações da fonte.
+    font={%
+        % Diminui o tamanho da fonte da legenda.
+        ABNTEXfontereduzida,
+        % Altera o distância entre as linhas.
+        singlespacing
+    },
+    % Exibe a numeração sem parênteses antes e depois.
+    labelformat=simple,
+    % Utiliza o separador recém criado para separar a numeração da legenda.
+    labelsep=parenthesis
+]{subcaption}
+
 % Utiliza o pacote `glossaries` se o método de processamento de abreviações e
 % siglas for o automático.
 \ifthenelse{\equal{\SistemaSiglas}{automatico}}{%
@@ -698,7 +722,7 @@
 \newcommand{\listofquadrosname}{Lista de quadros}
 \newlistof{listofquadros}{loq}{\listofquadrosname}
 
-% Configura alguns parâmetros da lista de ilustrações.
+% Configura alguns parâmetros da lista de quadros.
 \setlength{\cftquadroindent}{0ex}
 \setlength{\cftquadronumwidth}{0ex}
 
@@ -1058,9 +1082,9 @@
 % ------------------------------------------------------------------------------
 
 % Define a quantidade de espaço ao redor de figuras, quadros e tabelas.
-\setlength{\floatsep}{1.3\baselineskip}
-\setlength{\intextsep}{1.3\baselineskip}
-\setlength{\textfloatsep}{1.3\baselineskip}
+\setlength{\floatsep}{\baselineskip}
+\setlength{\intextsep}{\baselineskip}
+\setlength{\textfloatsep}{\baselineskip}
 
 % Declara um separador para os rótulo e as legendas.
 \DeclareCaptionLabelSeparator{dash}{\space--\space}
@@ -1068,10 +1092,10 @@
 \AtBeginDocument{%
     % Configura a exibição das legendas em figuras, quadros e tabelas.
     \captionsetup{%
-        % Espaçamento acima da legenda.
-        aboveskip=0pt,
-        % Espaçamento abaixo da legenda.
-        belowskip=3pt,
+        % Espaçamento entre a legenda e o objeto.
+        aboveskip=6pt,
+        % Espaçamento entre a legenda e o texto.
+        belowskip=\baselineskip-12pt,
         % Altera o distância entre as linhas.
         font=singlespacing,
         % Formato sem indentação.
@@ -1082,15 +1106,10 @@
         position=top,
         % Não centraliza a legenda se tiver apenas uma linha.
         singlelinecheck=false,
-        % Distância entre a legenda e o elemento em questão.
-        skip=6pt,
         % Adiciona um ponto final ao texto da legenda.
         textformat=period
     }
 }
-
-% Declara uma fonte para usar nas legendas.
-\DeclareCaptionFont{ABNTEXfontereduzida}{\ABNTEXfontereduzida}
 
 \makeatletter
 
@@ -1098,12 +1117,8 @@
 \renewcommand{\fonte}[1]{%
     % Altera as configurações da legenda da fonte.
     \captionsetup{%
-        % Espaçamento acima da legenda.
-        aboveskip=0pt,
-        % Espaçamento abaixo da legenda.
-        belowskip=-9pt,
-        % Formato sem indentação.
-        format=plain,
+        % Espaçamento entre a legenda e o texto.
+        belowskip=0pt,
         % Configurações da fonte.
         font={%
             % Diminui o tamanho da fonte da legenda da fonte.
@@ -1114,13 +1129,7 @@
         % Altera para dois pontos o separador entre o rótulo e a legenda.
         labelsep=colon,
         % Indica que esta legenda será a de baixo.
-        position=bottom,
-        % Não centraliza a legenda se tiver apenas uma linha.
-        singlelinecheck=false,
-        % Distância entre a legenda e o elemento em questão.
-        skip=6pt,
-        % Adiciona um ponto final ao texto da legenda.
-        textformat=period
+        position=bottom
     }
 
     % Exibe a legenda da fonte.
@@ -1131,7 +1140,7 @@
 \def\fps@figure{htbp!}
 \def\fps@table{htbp!}
 
-% Centraliza os floats em páginas dedicadas.
+% Centraliza os floats quando em páginas dedicadas.
 \setlength{\@fptop}{0pt plus 1fil}
 \setlength{\@fpbot}{16pt plus 1fil}
 
@@ -1143,7 +1152,7 @@
 
 % Define uma constante para a altura máxima dos floats.
 \newlength{\maxheight}
-\setlength{\maxheight}{\textheight-2cm}
+\setlength{\maxheight}{\textheight-25mm}
 
 % Define uma constante para a largura máxima dos floats.
 \newlength{\maxwidth}
