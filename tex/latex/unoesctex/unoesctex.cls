@@ -87,6 +87,18 @@
 
 
 % ------------------------------------------------------------------------------
+% CARREGAMENTO PROGRAMADO DE PACOTES.
+% ------------------------------------------------------------------------------
+
+\RequirePackage{scrlfile}
+
+% Permite alinhar o texto das notas de rodapé de acordo com a largura dos
+% respectivos marcadores.
+\BeforePackage{hyperref}{\RequirePackage[hang]{footmisc}}
+
+
+
+% ------------------------------------------------------------------------------
 % CLASSE BASE.
 % ------------------------------------------------------------------------------
 
@@ -116,6 +128,7 @@
 \RequirePackage{amsfonts}
 \RequirePackage{amsmath}
 \RequirePackage{etoolbox}
+\RequirePackage{fnpct}
 \RequirePackage{fontspec}
 \RequirePackage{hyperxmp}
 \RequirePackage{indentfirst}
@@ -125,6 +138,7 @@
 \RequirePackage{unicode-math}
 \RequirePackage{xcolor}
 \RequirePackage{xstring}
+\RequirePackage{xurl}
 
 % Suprime aviso de utilização do pacote caption com a classe memoir.
 \WarningFilter*{memoir}{For the caption package to function properly with memoir}
@@ -370,6 +384,9 @@
 % Configura o estilo de paginação em páginas de arquivos PDF inclusos.
 \includepdfset{pagecommand=\thispagestyle{abntheadings}}
 
+% Necessário para resolver um conflito entre os pacotes fnpct e pagenote.
+\makepagenote
+
 % Retira espaços extras entre as frases.
 \frenchspacing
 
@@ -399,7 +416,18 @@
 \newlength{\spacewidth}
 \settowidth{\spacewidth}{\space}
 
-% Configurações dos links.
+
+
+% ------------------------------------------------------------------------------
+% CONFIGURAÇÕES DE HYPERLINKS.
+% ------------------------------------------------------------------------------
+
+% Permite desabilitar um hyperlink em específico.
+\newcommand{\nolink}[1]{%
+    {\protect\NoHyper#1\protect\endNoHyper}
+}
+
+% Configurações do pacote hyperref.
 \hypersetup{%
     % Profundidade máxima ao listar os bookmarks do arquivo PDF.
     bookmarksdepth=5,
@@ -969,6 +997,45 @@
     % Pula uma linha após o bloco.
     \vspace*{\baselineskip}
 }
+
+
+
+% ------------------------------------------------------------------------------
+% NOTAS DE RODAPÉ.
+% ------------------------------------------------------------------------------
+
+\let\oldfootnote\footnote
+
+% Ajusta o espaçamento após um marcador de nota de rodapé presente no texto.
+\renewcommand{\footnote}[1]{\oldfootnote{#1}\unskip}
+
+% Configura o comprimento da linha horizontal.
+\renewcommand{\footnoterule}{\vfill\kern -3pt\hrule width 5cm\kern 2.6pt}
+
+% Ajusta o espaçamento após um marcador de nota de referência presente no texto.
+\renewcommand{\footciteref}[1]{\footnote{\nolink{\citetext{#1}}}\unskip}
+
+% Comando para inserir referência em nota de rodapé a partir de linha própria.
+\newcommand{\footnotecite}[1]{\footnotetext{\nolink{\citetext{#1}}}}
+
+% Altera o estilo dos marcadores das notas de rodapé.
+\footmarkstyle{\footnotesize{\textsuperscript{#1}}}
+
+% Define o espaçamento entre o texto e as notas de rodapé.
+\setlength{\skip\footins}{\baselineskip}
+
+% Ajusta a margem esquerda do texto das notas de rodapé.
+\setlength{\footnotemargin}{0em}
+
+% Evita quebras de páginas em notas de rodapé.
+\interfootnotelinepenalty=10000
+
+\makeatletter
+
+% Reinicia o contador dos marcadores das notas de rodapé a cada capítulo.
+\@addtoreset{footnote}{chapter}
+
+\makeatother
 
 
 
