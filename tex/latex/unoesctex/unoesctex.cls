@@ -972,6 +972,9 @@
 % um ano específico, utiliza o que estiver definido no preâmbulo do trabalho.
 \newcommand{\citemyself}[1][\imprimirdata]{o autor (#1)}
 
+% Insere um sinal de supressão de texto para utilização em citações longas.
+\newcommand{\supress}{[...]}
+
 % Reconfigura o ambiente de citação direta longa.
 \renewenvironment*{citacao}[1][default]{%
     % Pula uma linha antes do bloco.
