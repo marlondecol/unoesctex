@@ -1220,13 +1220,19 @@
 % não.
 \renewcommand{\floatpagefraction}{.8}
 
+% Calcula a altura dos floats a partir de uma referência.
+\newcommand{\getheight}[1]{#1-25mm}
+
+% Calcula a largura dos floats a partir de uma referência.
+\newcommand{\getwidth}[1]{#1-2pt}
+
 % Define uma constante para a altura máxima dos floats.
 \newlength{\maxheight}
-\setlength{\maxheight}{\textheight-25mm}
+\setlength{\maxheight}{\getheight{\textheight}}
 
 % Define uma constante para a largura máxima dos floats.
 \newlength{\maxwidth}
-\setlength{\maxwidth}{\textwidth-2pt}
+\setlength{\maxwidth}{\getwidth{\textwidth}}
 
 
 
