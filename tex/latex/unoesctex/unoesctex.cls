@@ -837,12 +837,14 @@
 % Comandos e configurações para o processamento automático de abreviações e
 % siglas.
 \ifthenelse{\equal{\SistemaSiglas}{automatico}}{%
-    % Inclui o arquivo com as definições de acrônimos. Deve ser utilizada no
-    % preâmbulo.
-    \newcommand{\inserirsiglas}[1]{%
-        \makeglossaries
-        \loadglsentries{#1}
-    }
+    % Estabelece uma nova opção para definir se o rótulo do respectivo
+    % acrônimo deve ser listado exatamente como foi escrito ou, caso
+    % contrário, com a primeira em maiúsculo.
+    \glsaddstoragekey{shortlisting}{ucfisrt}{\acronymshortlisting}
+
+    % Estabelece uma nova opção para definir o estilo da fonte da forma
+    % abreviada do respectivo acrônimo.
+    \glsaddstoragekey{shortfont}{}{\acronymshortfont}
 
     % Define um novo estilo para a lista de acrônimos.
     \newglossarystyle{unoescsiglas}{%
@@ -859,13 +861,33 @@
         \renewenvironment{theglossary}{\begin{acronymize}}{\end{acronymize}}
 
         % Redefine alguns atributos.
-        \renewcommand*{\glossaryheader}{}%
-        \renewcommand*{\glsgroupheading}[1]{}%
-        \renewcommand*{\glsgroupskip}{}%
+        \renewcommand*{\glossaryheader}{}
+        \renewcommand*{\glsgroupheading}[1]{}
+        \renewcommand*{\glsgroupskip}{}
 
         % Configura cada entrada como um item do ambiente de acrônimos.
-        \renewcommand*{\glossentry}[1]{\acronym{\glstarget{##1}{\glossentryname{##1}}}{\Glossentrydesc{##1}}}
+        \renewcommand*{\glossentry}[1]{\acronym{\glstarget{##1}{\acronymshortfont{##1}\ifglsfieldeq{##1}{shortlisting}{asis}{\glsentryshort{##1}}{\Glsentryshort{##1}}}}{\Glsentrylong{##1}}}
     }
+
+    % Cria um novo estilo de acrônimos para aplicar as fontes configuradas na
+    % definição dos acrônimos, quando for o caso.
+    \newacronymstyle{unoescsiglas}{\GlsUseAcrEntryDispStyle{long-short}}{%
+        % Utiliza um estilo de acrônimos predefinido para criar este estilo.
+        \GlsUseAcrStyleDefs{long-short}%
+        % Altera os formatos de acrônimos que possuem ambas as formas completa e
+        % abreviada para que utilizem a fonte configurada em cada um.
+        \renewcommand*{\genacrfullformat}[2]{\glsentrylong{##1}##2\space({\acronymshortfont{##1}\glsentryshort{##1}})}%
+        \renewcommand*{\Genacrfullformat}[2]{\Glsentrylong{##1}##2\space({\acronymshortfont{##1}\glsentryshort{##1}})}%
+        \renewcommand*{\genplacrfullformat}[2]{\glsentrylongpl{##1}##2\space({\acronymshortfont{##1}\glsentryshortpl{##1}})}%
+        \renewcommand*{\Genplacrfullformat}[2]{\Glsentrylongpl{##1}##2\space({\acronymshortfont{##1}\glsentryshortpl{##1}})}%
+        % Altera a fonte padrão dos acrônimos para a fonte configurada em cada
+        % acrônimo.
+        \renewcommand*{\acronymfont}[1]{{\acronymshortfont{\glslabel}##1}}%
+        \renewcommand*{\acronymentry}[1]{{\acronymshortfont{##1}\glsentryshort{##1}}}%
+    }
+
+    % Aplica a nova configuração de acrônimos.
+    \setacronymstyle{unoescsiglas}
 
     % Comando de atalho para impressão da lista de abreviações e siglas.
     \newcommand{\imprimirsiglas}{%
@@ -874,6 +896,13 @@
 
         % Finaliza a página.
         \cleardoublepage
+    }
+
+    % Inclui o arquivo com as definições de acrônimos. Deve ser utilizada no
+    % preâmbulo.
+    \newcommand{\inserirsiglas}[1]{%
+        \makeglossaries
+        \loadglsentries{#1}
     }
 }{}
 
